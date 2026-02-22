@@ -133,19 +133,22 @@ tasks.shadowJar {
         include(dependency("com.tcoded:FoliaLib"))
         include(dependency("org.bstats:bstats-bukkit"))
         include(dependency("org.bstats:bstats-base"))
-        include(dependency("dev.hytical:hyticallib-i18n-core"))
-        include(dependency("dev.hytical:hyticallib-i18n-bukkit"))
+        include(dependency("com.github.HyticMC.hyticallib-i18n:hyticallib-i18n-core"))
+        include(dependency("com.github.HyticMC.hyticallib-i18n:hyticallib-i18n-bukkit"))
     }
 
-    relocate("com.tcoded.folialib", "dev.hytical.libs.folialib")
-    relocate("org.bstats", "dev.hytical.libs.bstats")
-    relocate("dev.hytical.i18n", "dev.hytical.libs.i18n")
+    relocate("com.tcoded.folialib", "dev.hytical.insureinv.libs.folialib")
+    relocate("org.bstats", "dev.hytical.insureinv.libs.bstats")
+    
+    relocate("dev.hytical.i18n", "dev.hytical.insureinv.libs.i18n") {
+        // Include tất cả subpackages
+        include("dev.hytical.i18n.**")
+    }
 
     exclude("META-INF/*.SF")
     exclude("META-INF/*.DSA")
     exclude("META-INF/*.RSA")
     exclude("META-INF/MANIFEST.MF")
-    exclude("META-INF/LICENSE*")
     exclude("META-INF/NOTICE*")
     exclude("META-INF/versions/**")
     exclude("META-INF/maven/**")
