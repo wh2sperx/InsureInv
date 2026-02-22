@@ -94,8 +94,8 @@ dependencies {
     // --- shaded into JAR → implementation ---
     implementation("org.bstats:bstats-bukkit:3.1.0")
     implementation("com.tcoded:FoliaLib:0.4.3")
-    implementation("com.github.HyticMC.hyticallib-i18n:hyticallib-i18n-core:1.0.1")
-    implementation("com.github.HyticMC.hyticallib-i18n:hyticallib-i18n-bukkit:1.0.1")
+    implementation("com.github.qhuyluvyou.hyticallib-i18n:hyticallib-i18n-core:1.0.1")
+    implementation("com.github.qhuyluvyou.hyticallib-i18n:hyticallib-i18n-bukkit:1.0.1")
 }
 
 // ---------------------------------------------------------------------------
