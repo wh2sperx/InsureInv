@@ -101,7 +101,6 @@ build/
 .gradle/
 .kotlin/
 target/
-!libs/
 !gradle/
 
 # Common working directory

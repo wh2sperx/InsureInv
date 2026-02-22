@@ -63,8 +63,7 @@ sourceSets {
 // ---------------------------------------------------------------------------
 // Repositories
 // ---------------------------------------------------------------------------
-repositories {
-    maven { url = uri("libs") }                                              // local hyticallib-i18n jars
+repositories {                                         // local hyticallib-i18n jars
     maven("https://repo.papermc.io/repository/maven-public/")                // Paper API
     maven("https://jitpack.io")                                              // VaultAPI
     maven("https://repo.helpch.at/releases")                                 // PlaceholderAPI
@@ -95,8 +94,8 @@ dependencies {
     // --- shaded into JAR → implementation ---
     implementation("org.bstats:bstats-bukkit:3.1.0")
     implementation("com.tcoded:FoliaLib:0.4.3")
-    implementation("dev.hytical:hyticallib-i18n-core:1.0.0")
-    implementation("dev.hytical:hyticallib-i18n-bukkit:1.0.0")
+    implementation("com.github.HyticMC.hyticallib-i18n:hyticallib-i18n-core:1.0.1")
+    implementation("com.github.HyticMC.hyticallib-i18n:hyticallib-i18n-bukkit:1.0.1")
 }
 
 // ---------------------------------------------------------------------------

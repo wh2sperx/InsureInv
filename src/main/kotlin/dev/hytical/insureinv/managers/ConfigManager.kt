@@ -15,7 +15,7 @@ class ConfigManager(
 
     init {
         plugin.saveDefaultConfig()
-        if(!langFol.exists()) {
+        if (!langFol.exists()) {
             langFol.mkdirs()
         }
         reload()

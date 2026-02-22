@@ -17,7 +17,8 @@ class I18nManager(
     private val defaultLanguage: String = "en_US"
 ) {
     private val bootstrapRef = AtomicReference<I18nBootstrap>()
-    @Volatile private var _storage: LangStorage? = null
+    @Volatile
+    private var _storage: LangStorage? = null
     private val logger: Logger = plugin.logger
 
     private val langDir = File(plugin.dataFolder, "lang")
