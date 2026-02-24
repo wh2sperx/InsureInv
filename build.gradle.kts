@@ -133,8 +133,8 @@ tasks.shadowJar {
         include(dependency("com.tcoded:FoliaLib"))
         include(dependency("org.bstats:bstats-bukkit"))
         include(dependency("org.bstats:bstats-base"))
-        include(dependency("com.github.HyticMC.hyticallib-i18n:hyticallib-i18n-core"))
-        include(dependency("com.github.HyticMC.hyticallib-i18n:hyticallib-i18n-bukkit"))
+        include(dependency("com.github.qhuyluvyou.hyticallib-i18n:hyticallib-i18n-core"))
+        include(dependency("com.github.qhuyluvyou.hyticallib-i18n:hyticallib-i18n-bukkit"))
     }
 
     relocate("com.tcoded.folialib", "dev.hytical.insureinv.libs.folialib")
