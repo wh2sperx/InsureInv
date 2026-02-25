@@ -5,16 +5,12 @@ plugins {
     id("com.gradleup.shadow") version "9.3.1"
 }
 
-// ---------------------------------------------------------------------------
-// Git properties generation (tương tự git-commit-id-maven-plugin)
-// ---------------------------------------------------------------------------
 val generateGitProperties by tasks.registering {
     group = "build"
     description = "Generates git.properties file with commit information"
 
     val outputFile = layout.buildDirectory.file("generated/resources/git/git.properties")
 
-    // Input tracking để Gradle biết khi nào cần regenerate
     inputs.property("git.head", providers.exec {
         commandLine("git", "rev-parse", "HEAD")
         isIgnoreExitValue = true
@@ -45,13 +41,11 @@ val generateGitProperties by tasks.registering {
     }
 }
 
-// Define gitCommitShort at top level for reuse
 val gitCommitShort = providers.exec {
     commandLine("git", "rev-parse", "--short", "HEAD")
     isIgnoreExitValue = true
 }.standardOutput.asText.map { it.trim() }.getOrElse("unknown")
 
-// Thêm generated resources vào sourceSets
 sourceSets {
     main {
         resources {
@@ -60,25 +54,18 @@ sourceSets {
     }
 }
 
-// ---------------------------------------------------------------------------
-// Repositories
-// ---------------------------------------------------------------------------
-repositories {                                         // local hyticallib-i18n jars
-    maven("https://repo.papermc.io/repository/maven-public/")                // Paper API
-    maven("https://jitpack.io")                                              // VaultAPI
-    maven("https://repo.helpch.at/releases")                                 // PlaceholderAPI
-    maven("https://repo.tcoded.com/releases")                                // FoliaLib
-    maven("https://repo.rosewooddev.io/repository/public/")                  // PlayerPoints
+repositories {
+    maven("https://repo.papermc.io/repository/maven-public/")
+    maven("https://jitpack.io")
+    maven("https://repo.helpch.at/releases")
+    maven("https://repo.tcoded.com/releases")
+    maven("https://repo.rosewooddev.io/repository/public/")
     mavenCentral()
 }
 
-// ---------------------------------------------------------------------------
-// Dependencies
-// ---------------------------------------------------------------------------
 val coroutinesVersion: String by project
 
 dependencies {
-    // --- provided by server / other plugins → compileOnly ---
     compileOnly("io.papermc.paper:paper-api:1.21.8-R0.1-SNAPSHOT")
     compileOnly("com.github.MilkBowl:VaultAPI:1.7.1")
     compileOnly("me.clip:placeholderapi:2.11.6")
@@ -88,28 +75,20 @@ dependencies {
     compileOnly("org.xerial:sqlite-jdbc:3.45.1.0")
     compileOnly("com.google.code.gson:gson:2.10.1")
 
-    // --- loaded via Paper Library Loader → compileOnly ---
     compileOnly("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion")
 
-    // --- shaded into JAR → implementation ---
     implementation("org.bstats:bstats-bukkit:3.1.0")
     implementation("com.tcoded:FoliaLib:0.4.3")
-    implementation("com.github.qhuyluvyou.hyticallib-i18n:hyticallib-i18n-core:1.0.1")
-    implementation("com.github.qhuyluvyou.hyticallib-i18n:hyticallib-i18n-bukkit:1.0.1")
+    implementation("org.bitbucket.qhuyy.hyticallib-i18n:hyticallib-i18n-core:main-63ae337785-1")
+    implementation("org.bitbucket.qhuyy.hyticallib-i18n:hyticallib-i18n-bukkit:main-63ae337785-1)
 }
 
-// ---------------------------------------------------------------------------
-// Kotlin
-// ---------------------------------------------------------------------------
 kotlin {
     jvmToolchain(21)
 }
 
-// ---------------------------------------------------------------------------
-// Resource filtering  (plugin.yml token replacement)
-// ---------------------------------------------------------------------------
 tasks.processResources {
-    dependsOn(generateGitProperties) // Đảm bảo git.properties được generate trước
+    dependsOn(generateGitProperties)
 
     val props = mapOf(
         "name"      to project.name,
@@ -122,9 +101,6 @@ tasks.processResources {
     }
 }
 
-// ---------------------------------------------------------------------------
-// Shadow JAR
-// ---------------------------------------------------------------------------
 tasks.shadowJar {
     archiveClassifier.set("")
     archiveFileName.set("${project.name}-${project.version}+${gitCommitShort}.jar")
@@ -133,15 +109,14 @@ tasks.shadowJar {
         include(dependency("com.tcoded:FoliaLib"))
         include(dependency("org.bstats:bstats-bukkit"))
         include(dependency("org.bstats:bstats-base"))
-        include(dependency("com.github.qhuyluvyou.hyticallib-i18n:hyticallib-i18n-core"))
-        include(dependency("com.github.qhuyluvyou.hyticallib-i18n:hyticallib-i18n-bukkit"))
+        include(dependency("org.bitbucket.qhuyy.hyticallib-i18n:hyticallib-i18n-bukkit"))
+        include(dependency("org.bitbucket.qhuyy.hyticallib-i18n:hyticallib-i18n-core"))
     }
 
     relocate("com.tcoded.folialib", "dev.hytical.insureinv.libs.folialib")
     relocate("org.bstats", "dev.hytical.insureinv.libs.bstats")
     
     relocate("dev.hytical.i18n", "dev.hytical.insureinv.libs.i18n") {
-        // Include tất cả subpackages
         include("dev.hytical.i18n.**")
     }
 
@@ -155,14 +130,10 @@ tasks.shadowJar {
     exclude("META-INF/proguard/**")
 }
 
-// shadowJar replaces the default jar
 tasks.build {
     dependsOn(tasks.shadowJar)
 }
 
-// ---------------------------------------------------------------------------
-// Tasks
-// ---------------------------------------------------------------------------
 tasks.register("printGitInfo") {
     group = "help"
     description = "Prints current git information"
