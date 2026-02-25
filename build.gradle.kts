@@ -80,7 +80,7 @@ dependencies {
     implementation("org.bstats:bstats-bukkit:3.1.0")
     implementation("com.tcoded:FoliaLib:0.4.3")
     implementation("org.bitbucket.qhuyy.hyticallib-i18n:hyticallib-i18n-core:main-63ae337785-1")
-    implementation("org.bitbucket.qhuyy.hyticallib-i18n:hyticallib-i18n-bukkit:main-63ae337785-1)
+    implementation("org.bitbucket.qhuyy.hyticallib-i18n:hyticallib-i18n-bukkit:main-63ae337785-1")
 }
 
 kotlin {
