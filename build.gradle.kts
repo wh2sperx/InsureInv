@@ -79,8 +79,8 @@ dependencies {
 
     implementation("org.bstats:bstats-bukkit:3.1.0")
     implementation("com.tcoded:FoliaLib:0.4.3")
-    implementation("org.bitbucket.qhuyy.hyticallib-i18n:hyticallib-i18n-core:main-SNAPSHOT")
-    implementation("org.bitbucket.qhuyy.hyticallib-i18n:hyticallib-i18n-bukkit:main-SNAPSHOT")
+    implementation("org.codeberg.qhuy1123.hyticallib-i18n:hyticallib-i18n-bukkit:main-SNAPSHOT")
+    implementation("org.codeberg.qhuy1123.hyticallib-i18n:hyticallib-i18n-bukkit:main-SNAPSHOT")
 }
 
 kotlin {
@@ -109,8 +109,8 @@ tasks.shadowJar {
         include(dependency("com.tcoded:FoliaLib"))
         include(dependency("org.bstats:bstats-bukkit"))
         include(dependency("org.bstats:bstats-base"))
-        include(dependency("org.bitbucket.qhuyy.hyticallib-i18n:hyticallib-i18n-bukkit"))
-        include(dependency("org.bitbucket.qhuyy.hyticallib-i18n:hyticallib-i18n-core"))
+        include(dependency("org.codeberg.qhuy1123.hyticallib-i18n:hyticallib-i18n-bukkit"))
+        include(dependency("org.codeberg.qhuy1123.hyticallib-i18n:hyticallib-i18n-core"))
     }
 
     relocate("com.tcoded.folialib", "dev.hytical.insureinv.libs.folialib")
