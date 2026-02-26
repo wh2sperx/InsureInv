@@ -5,7 +5,7 @@
 # InsureInv
 
 [![Codeberg](https://img.shields.io/badge/hosted-Codeberg-2185D0?logo=codeberg)](https://codeberg.org/qhuy1123/InsureInv)
-[![Modrinth](https://img.shields.io/badge/available-Modrinth-00AF5C?logo=modrinth)]()
+[![Modrinth](https://img.shields.io/badge/available-Modrinth-00AF5C?logo=modrinth)](https://modrinth.com/plugin/insureinv)
 [![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 [![hyticallib-i18n](https://img.shields.io/badge/dependency-JitPack-6B8E4C)](https://codeberg.org/qhuy1123/hyticallib-i18n)
 
