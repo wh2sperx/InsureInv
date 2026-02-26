@@ -1,6 +1,17 @@
 # InsureInv
 
+<div align="center">
+
+# InsureInv
+
+[![Codeberg](https://img.shields.io/badge/hosted-Codeberg-2185D0?logo=codeberg)](https://codeberg.org/qhuy1123/InsureInv)
+[![Modrinth](https://img.shields.io/badge/available-Modrinth-00AF5C?logo=modrinth)]()
+[![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
+[![hyticallib-i18n](https://img.shields.io/badge/dependency-JitPack-6B8E4C)](https://codeberg.org/qhuy1123/hyticallib-i18n)
+
 Plugin bảo vệ inventory cho Minecraft server. Dựa trên hệ thống charge có thể mua bằng tiền in-game. Hỗ trợ Folia và Paper 1.21+.
+
+</div>
 
 ## Storage
 
