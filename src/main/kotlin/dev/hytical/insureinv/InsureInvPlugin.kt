@@ -18,7 +18,7 @@ import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer
 import org.bukkit.plugin.java.JavaPlugin
 
 open class InsureInvPlugin : JavaPlugin() {
-    private val pluginId: Int = 29351
+    private val pluginId: Int = 29775
 
     lateinit var pluginBuildInfo: PluginBuildInfo
         private set
