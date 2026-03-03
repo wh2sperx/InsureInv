@@ -6,8 +6,8 @@ import dev.hytical.insureinv.utils.PlaceholderUtil
 import org.bukkit.Bukkit
 import org.bukkit.command.CommandSender
 
-class SetCommand : SubCommand {
-    override val name = "set"
+class ResetCommand : SubCommand {
+    override val name = "reset"
     override val permission = "insureinv.admin"
     override val requiresPlayer = false
 
@@ -18,7 +18,7 @@ class SetCommand : SubCommand {
 
         val targetName = context.arg(2)
         if (targetName == null) {
-            messageManager.sendMessage(sender, "usage-set")
+            messageManager.sendMessage(sender, "usage-reset")
             return
         }
 
@@ -31,26 +31,13 @@ class SetCommand : SubCommand {
             return
         }
 
-        val amount = context.argInt(3)
-        if (amount == null || amount < 0) {
-            if (context.arg(3) == null) {
-                messageManager.sendMessage(sender, "usage-set")
-            } else {
-                messageManager.sendMessage(sender, "invalid-amount")
-            }
-            return
-        }
-
         val playerData = storageManager.getPlayerData(targetPlayer)
-        playerData.updateCharges(amount)
+        playerData.updateCharges(0)
         storageManager.savePlayerData(playerData)
 
         messageManager.sendMessage(
-            sender, "admin-set-success",
-            PlaceholderUtil.of(
-                "player" to targetPlayer.name,
-                "amount" to amount.toString()
-            )
+            sender, "admin-reset-success",
+            PlaceholderUtil.of("player" to targetPlayer.name)
         )
     }
 
@@ -62,7 +49,6 @@ class SetCommand : SubCommand {
                     .filter { it.lowercase().startsWith(args[2].lowercase()) }
             }
 
-            4 -> listOf("0", "1", "5", "10").filter { it.startsWith(args[3]) }
             else -> emptyList()
         }
     }

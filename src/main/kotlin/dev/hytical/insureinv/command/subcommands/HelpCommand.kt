@@ -12,7 +12,6 @@ class HelpCommand : SubCommand {
 
     override fun execute(context: CommandContext) {
         val sender = context.sender
-
         val page = context.argInt(1) ?: 1
         sendHelp(sender, page, context)
     }
@@ -27,15 +26,19 @@ class HelpCommand : SubCommand {
         helpCommands.add("help-info")
 
         if (sender.hasPermission("insureinv.admin")) {
-            helpCommands.add("help-set")
-            helpCommands.add("help-setprice")
-            helpCommands.add("help-setmax")
-            helpCommands.add("help-reload")
+            helpCommands.add("help-usage")
+            helpCommands.add("help-usage-set")
+            helpCommands.add("help-usage-give")
+            helpCommands.add("help-usage-reset")
+            helpCommands.add("help-config")
+            helpCommands.add("help-config-setprice")
+            helpCommands.add("help-config-setmax")
+            helpCommands.add("help-config-reload")
         }
 
         helpCommands.add("help-help")
 
-        val commandsPerPage = 5
+        val commandsPerPage = 6
         val totalPages = (helpCommands.size + commandsPerPage - 1) / commandsPerPage
         val actualPage = page.coerceIn(1, totalPages)
 

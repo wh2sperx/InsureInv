@@ -6,8 +6,8 @@ import dev.hytical.insureinv.utils.PlaceholderUtil
 import org.bukkit.Bukkit
 import org.bukkit.command.CommandSender
 
-class SetCommand : SubCommand {
-    override val name = "set"
+class GiveCommand : SubCommand {
+    override val name = "give"
     override val permission = "insureinv.admin"
     override val requiresPlayer = false
 
@@ -15,10 +15,11 @@ class SetCommand : SubCommand {
         val sender = context.sender
         val messageManager = context.messageManager
         val storageManager = context.storageManager
+        val configManager = context.configManager
 
         val targetName = context.arg(2)
         if (targetName == null) {
-            messageManager.sendMessage(sender, "usage-set")
+            messageManager.sendMessage(sender, "usage-give")
             return
         }
 
@@ -32,9 +33,9 @@ class SetCommand : SubCommand {
         }
 
         val amount = context.argInt(3)
-        if (amount == null || amount < 0) {
+        if (amount == null || amount <= 0) {
             if (context.arg(3) == null) {
-                messageManager.sendMessage(sender, "usage-set")
+                messageManager.sendMessage(sender, "usage-give")
             } else {
                 messageManager.sendMessage(sender, "invalid-amount")
             }
@@ -42,14 +43,30 @@ class SetCommand : SubCommand {
         }
 
         val playerData = storageManager.getPlayerData(targetPlayer)
-        playerData.updateCharges(amount)
+        val maxCharges = configManager.getMaxCharges()
+
+        if (playerData.charges + amount > maxCharges) {
+            val canGive = maxCharges - playerData.charges
+            messageManager.sendMessage(
+                sender, "admin-give-max-exceeded",
+                PlaceholderUtil.of(
+                    "player" to targetPlayer.name,
+                    "amount" to canGive.toString()
+                )
+            )
+            return
+        }
+
+        playerData.addCharges(amount)
         storageManager.savePlayerData(playerData)
 
         messageManager.sendMessage(
-            sender, "admin-set-success",
+            sender, "admin-give-success",
             PlaceholderUtil.of(
                 "player" to targetPlayer.name,
-                "amount" to amount.toString()
+                "amount" to amount.toString(),
+                "charges" to playerData.charges.toString(),
+                "max" to maxCharges.toString()
             )
         )
     }
@@ -62,7 +79,7 @@ class SetCommand : SubCommand {
                     .filter { it.lowercase().startsWith(args[2].lowercase()) }
             }
 
-            4 -> listOf("0", "1", "5", "10").filter { it.startsWith(args[3]) }
+            4 -> listOf("1", "5", "10").filter { it.startsWith(args[3]) }
             else -> emptyList()
         }
     }

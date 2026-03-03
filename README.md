@@ -42,17 +42,22 @@ The main command is `/insureinv`. You can also use the aliases `/inv` or `/hinv`
 | `/insureinv setlang <locale>` | Set your personal display language. | `insureinv.use` |
 | `/insureinv help` | Show the user help menu. | `insureinv.use` |
 
-### Admin Commands
+### Admin — Usage Commands
 **Note:** `insureinv.admin` inherits all permissions from `insureinv.use`.
 
 | Command | Description | Permission |
 |---------|-------------|------------|
-| `/insureinv set <player> <amount>` | Directly set a player's charge count. | `insureinv.admin` |
-| `/insureinv setprice <price>` | Globally change the economy price per charge. | `insureinv.admin` |
-| `/insureinv setmax <amount>` | Globally change the maximum charges a player can hold. | `insureinv.admin` |
-| `/insureinv langreload` | Reload language and translation files. | `insureinv.admin` |
-| `/insureinv reload` | Reload the main plugin configuration. | `insureinv.admin` |
-| `/insureinv version` | View detailed version, build info. | `insureinv.admin` |
+| `/insureinv usage set <player> <amount>` | Directly set a player's charge count. | `insureinv.admin` |
+| `/insureinv usage give <player> <amount>` | Give additional charges to a player. | `insureinv.admin` |
+| `/insureinv usage reset <player>` | Reset a player's charges to 0. | `insureinv.admin` |
+
+### Admin — Config Commands
+| Command | Description | Permission |
+|---------|-------------|------------|
+| `/insureinv config setprice <price>` | Globally change the economy price per charge. | `insureinv.admin` |
+| `/insureinv config setmax <amount>` | Globally change the maximum charges a player can hold. | `insureinv.admin` |
+| `/insureinv config reload` | Reload the plugin configuration. | `insureinv.admin` |
+| `/insureinv version` | View detailed version and build info. | `insureinv.admin` |
 
 ---
 

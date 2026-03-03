@@ -19,7 +19,7 @@ libraries:
 commands:
   insureinv:
     description: Main InsureInvPlugin command
-    usage: /<command> <buy|toggle|info|set|setprice|setmax|reload|help> [args]
+    usage: /<command> <buy|toggle|info|usage|config|help> [args]
     aliases:
       - inv
       - hinv

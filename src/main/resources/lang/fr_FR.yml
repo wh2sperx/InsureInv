@@ -25,6 +25,9 @@ info:
 admin:
   set-success: "<color:#99ff94>✔</color> <white>Succès <dark_gray>▪ <white>Charges de <color:#9ce8ff>{player}</color> définies à <color:#9ce8ff>{amount}</color>."
   toggle-success: "<color:#99ff94>✔</color> <white>Succès <dark_gray>▪ <white>Protection basculée à <color:#9ce8ff>{status}</color> pour <color:#9ce8ff>{player}</color>."
+  give-success: "<color:#99ff94>✔</color> <white>Succès <dark_gray>▪ <white>Donné <color:#9ce8ff>{amount}</color> charge(s) à <color:#9ce8ff>{player}</color>. Il a maintenant <color:#9ce8ff>{charges}</color>/{max}."
+  give-max-exceeded: "<gradient:#ff7817:#ffc46b>Impossible de donner des charges ! <color:#ffc885>{player}</color> ne peut recevoir que <color:#ffc885>{amount}</color> de plus.</gradient>"
+  reset-success: "<color:#99ff94>✔</color> <white>Succès <dark_gray>▪ <white>Charges de <color:#9ce8ff>{player}</color> réinitialisées à 0."
   price-updated: "<color:#99ff94>✔</color> <white>Succès <dark_gray>▪ <white>Prix par charge mis à jour à <color:#9ce8ff>${price}</color>."
   max-updated: "<color:#99ff94>✔</color> <white>Succès <dark_gray>▪ <white>Charges maximales par joueur mises à jour à <color:#9ce8ff>{max}</color>."
 
@@ -46,19 +49,27 @@ error:
 
 usage:
   buy: "<gradient:#ff7817:#ffc46b>Utilisation : <color:#9ce8ff>/insureinv buy <montant></color></gradient>"
-  set: "<gradient:#ff7817:#ffc46b>Utilisation : <color:#9ce8ff>/insureinv set <joueur> <montant></color></gradient>"
-  setprice: "<gradient:#ff7817:#ffc46b>Utilisation : <color:#9ce8ff>/insureinv setprice <montant></color></gradient>"
-  setmax: "<gradient:#ff7817:#ffc46b>Utilisation : <color:#9ce8ff>/insureinv setmax <montant></color></gradient>"
+  set: "<gradient:#ff7817:#ffc46b>Utilisation : <color:#9ce8ff>/insureinv usage set <joueur> <montant></color></gradient>"
+  give: "<gradient:#ff7817:#ffc46b>Utilisation : <color:#9ce8ff>/insureinv usage give <joueur> <montant></color></gradient>"
+  reset: "<gradient:#ff7817:#ffc46b>Utilisation : <color:#9ce8ff>/insureinv usage reset <joueur></color></gradient>"
+  setprice: "<gradient:#ff7817:#ffc46b>Utilisation : <color:#9ce8ff>/insureinv config setprice <montant></color></gradient>"
+  setmax: "<gradient:#ff7817:#ffc46b>Utilisation : <color:#9ce8ff>/insureinv config setmax <montant></color></gradient>"
+  usage-group: "<gradient:#ff7817:#ffc46b>Utilisation : <color:#9ce8ff>/insureinv usage <set|give|reset></color></gradient>"
+  config-group: "<gradient:#ff7817:#ffc46b>Utilisation : <color:#9ce8ff>/insureinv config <setprice|setmax|reload></color></gradient>"
 
 help:
   header: "<gradient:#FFFFFF:#c9f505>━━━━━━━━━━━━ Aide InsureInvPlugin ({page}/{total}) ━━━━━━━━━━━━</gradient>"
   buy: "<dark_gray>▪ <color:#9ce8ff>/insureinv buy <montant></color> <dark_gray>-</dark_gray> <white>Acheter des charges de protection</white>"
   toggle: "<dark_gray>▪ <color:#9ce8ff>/insureinv toggle [joueur]</color> <dark_gray>-</dark_gray> <white>Basculer la protection d'inventaire</white>"
   info: "<dark_gray>▪ <color:#9ce8ff>/insureinv info [joueur]</color> <dark_gray>-</dark_gray> <white>Voir les charges et le statut</white>"
-  set: "<dark_gray>▪ <color:#9ce8ff>/insureinv set <joueur> <montant></color> <dark_gray>-</dark_gray> <white>Définir les charges (Admin)</white>"
-  setprice: "<dark_gray>▪ <color:#9ce8ff>/insureinv setprice <montant></color> <dark_gray>-</dark_gray> <white>Modifier le prix par charge (Admin)</white>"
-  setmax: "<dark_gray>▪ <color:#9ce8ff>/insureinv setmax <montant></color> <dark_gray>-</dark_gray> <white>Modifier le max de charges (Admin)</white>"
-  reload: "<dark_gray>▪ <color:#9ce8ff>/insureinv reload</color> <dark_gray>-</dark_gray> <white>Recharger la configuration (Admin)</white>"
+  usage: "<gradient:#FFFFFF:#c9f505>━━━ Commandes Usage (Admin) ━━━</gradient>"
+  usage-set: "<dark_gray>  ▪ <color:#9ce8ff>/insureinv usage set <joueur> <montant></color> <dark_gray>-</dark_gray> <white>Définir les charges du joueur</white>"
+  usage-give: "<dark_gray>  ▪ <color:#9ce8ff>/insureinv usage give <joueur> <montant></color> <dark_gray>-</dark_gray> <white>Donner des charges au joueur</white>"
+  usage-reset: "<dark_gray>  ▪ <color:#9ce8ff>/insureinv usage reset <joueur></color> <dark_gray>-</dark_gray> <white>Réinitialiser les charges du joueur</white>"
+  config: "<gradient:#FFFFFF:#c9f505>━━━ Commandes Config (Admin) ━━━</gradient>"
+  config-setprice: "<dark_gray>  ▪ <color:#9ce8ff>/insureinv config setprice <montant></color> <dark_gray>-</dark_gray> <white>Modifier le prix par charge</white>"
+  config-setmax: "<dark_gray>  ▪ <color:#9ce8ff>/insureinv config setmax <montant></color> <dark_gray>-</dark_gray> <white>Modifier le max de charges</white>"
+  config-reload: "<dark_gray>  ▪ <color:#9ce8ff>/insureinv config reload</color> <dark_gray>-</dark_gray> <white>Recharger la configuration</white>"
   help: "<dark_gray>▪ <color:#9ce8ff>/insureinv help [page]</color> <dark_gray>-</dark_gray> <white>Afficher l'aide</white>"
   footer: "<gradient:#FFFFFF:#c9f505>━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</gradient>"
 

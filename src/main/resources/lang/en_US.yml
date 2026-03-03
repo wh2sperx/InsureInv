@@ -25,6 +25,9 @@ info:
 admin:
   set-success: "<color:#99ff94>✔</color> <white>Success <dark_gray>▪ <white>Set charges for <color:#9ce8ff>{player}</color> to <color:#9ce8ff>{amount}</color>."
   toggle-success: "<color:#99ff94>✔</color> <white>Success <dark_gray>▪ <white>Toggled protection to <color:#9ce8ff>{status}</color> for <color:#9ce8ff>{player}</color>."
+  give-success: "<color:#99ff94>✔</color> <white>Success <dark_gray>▪ <white>Gave <color:#9ce8ff>{amount}</color> charge(s) to <color:#9ce8ff>{player}</color>. They now have <color:#9ce8ff>{charges}</color>/{max}."
+  give-max-exceeded: "<gradient:#ff7817:#ffc46b>Cannot give charges! <color:#ffc885>{player}</color> can only receive <color:#ffc885>{amount}</color> more.</gradient>"
+  reset-success: "<color:#99ff94>✔</color> <white>Success <dark_gray>▪ <white>Reset charges for <color:#9ce8ff>{player}</color> to 0."
   price-updated: "<color:#99ff94>✔</color> <white>Success <dark_gray>▪ <white>Price per charge updated to <color:#9ce8ff>${price}</color>."
   max-updated: "<color:#99ff94>✔</color> <white>Success <dark_gray>▪ <white>Max charges per player updated to <color:#9ce8ff>{max}</color>."
 
@@ -46,19 +49,27 @@ error:
 
 usage:
   buy: "<gradient:#ff7817:#ffc46b>Usage: <color:#9ce8ff>/insureinv buy <amount></color></gradient>"
-  set: "<gradient:#ff7817:#ffc46b>Usage: <color:#9ce8ff>/insureinv set <player> <amount></color></gradient>"
-  setprice: "<gradient:#ff7817:#ffc46b>Usage: <color:#9ce8ff>/insureinv setprice <amount></color></gradient>"
-  setmax: "<gradient:#ff7817:#ffc46b>Usage: <color:#9ce8ff>/insureinv setmax <amount></color></gradient>"
+  set: "<gradient:#ff7817:#ffc46b>Usage: <color:#9ce8ff>/insureinv usage set <player> <amount></color></gradient>"
+  give: "<gradient:#ff7817:#ffc46b>Usage: <color:#9ce8ff>/insureinv usage give <player> <amount></color></gradient>"
+  reset: "<gradient:#ff7817:#ffc46b>Usage: <color:#9ce8ff>/insureinv usage reset <player></color></gradient>"
+  setprice: "<gradient:#ff7817:#ffc46b>Usage: <color:#9ce8ff>/insureinv config setprice <amount></color></gradient>"
+  setmax: "<gradient:#ff7817:#ffc46b>Usage: <color:#9ce8ff>/insureinv config setmax <amount></color></gradient>"
+  usage-group: "<gradient:#ff7817:#ffc46b>Usage: <color:#9ce8ff>/insureinv usage <set|give|reset></color></gradient>"
+  config-group: "<gradient:#ff7817:#ffc46b>Usage: <color:#9ce8ff>/insureinv config <setprice|setmax|reload></color></gradient>"
 
 help:
   header: "<gradient:#FFFFFF:#c9f505>━━━━━━━━━━━━ InsureInvPlugin Help ({page}/{total}) ━━━━━━━━━━━━</gradient>"
   buy: "<dark_gray>▪ <color:#9ce8ff>/insureinv buy <amount></color> <dark_gray>-</dark_gray> <white>Buy inventory protection charges</white>"
   toggle: "<dark_gray>▪ <color:#9ce8ff>/insureinv toggle [player]</color> <dark_gray>-</dark_gray> <white>Toggle inventory protection</white>"
   info: "<dark_gray>▪ <color:#9ce8ff>/insureinv info [player]</color> <dark_gray>-</dark_gray> <white>View charges and protection status</white>"
-  set: "<dark_gray>▪ <color:#9ce8ff>/insureinv set <player> <amount></color> <dark_gray>-</dark_gray> <white>Set charges for player (Admin)</white>"
-  setprice: "<dark_gray>▪ <color:#9ce8ff>/insureinv setprice <amount></color> <dark_gray>-</dark_gray> <white>Update price per charge (Admin)</white>"
-  setmax: "<dark_gray>▪ <color:#9ce8ff>/insureinv setmax <amount></color> <dark_gray>-</dark_gray> <white>Update max charges (Admin)</white>"
-  reload: "<dark_gray>▪ <color:#9ce8ff>/insureinv reload</color> <dark_gray>-</dark_gray> <white>Reload configuration (Admin)</white>"
+  usage: "<gradient:#FFFFFF:#c9f505>━━━ Usage Commands (Admin) ━━━</gradient>"
+  usage-set: "<dark_gray>  ▪ <color:#9ce8ff>/insureinv usage set <player> <amount></color> <dark_gray>-</dark_gray> <white>Set charges for player</white>"
+  usage-give: "<dark_gray>  ▪ <color:#9ce8ff>/insureinv usage give <player> <amount></color> <dark_gray>-</dark_gray> <white>Give charges to player</white>"
+  usage-reset: "<dark_gray>  ▪ <color:#9ce8ff>/insureinv usage reset <player></color> <dark_gray>-</dark_gray> <white>Reset charges for player</white>"
+  config: "<gradient:#FFFFFF:#c9f505>━━━ Config Commands (Admin) ━━━</gradient>"
+  config-setprice: "<dark_gray>  ▪ <color:#9ce8ff>/insureinv config setprice <amount></color> <dark_gray>-</dark_gray> <white>Update price per charge</white>"
+  config-setmax: "<dark_gray>  ▪ <color:#9ce8ff>/insureinv config setmax <amount></color> <dark_gray>-</dark_gray> <white>Update max charges</white>"
+  config-reload: "<dark_gray>  ▪ <color:#9ce8ff>/insureinv config reload</color> <dark_gray>-</dark_gray> <white>Reload configuration</white>"
   help: "<dark_gray>▪ <color:#9ce8ff>/insureinv help [page]</color> <dark_gray>-</dark_gray> <white>Display help information</white>"
   footer: "<gradient:#FFFFFF:#c9f505>━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</gradient>"
 

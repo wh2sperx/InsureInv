@@ -15,9 +15,9 @@ class SetMaxCommand : SubCommand {
         val messageManager = context.messageManager
         val configManager = context.configManager
 
-        val max = context.argInt(1)
+        val max = context.argInt(2)
         if (max == null || max <= 0) {
-            if (context.arg(1) == null) {
+            if (context.arg(2) == null) {
                 messageManager.sendMessage(sender, "usage-setmax")
             } else {
                 messageManager.sendMessage(sender, "invalid-amount")
@@ -34,7 +34,7 @@ class SetMaxCommand : SubCommand {
 
     override fun tabComplete(sender: CommandSender, args: Array<String>): List<String> {
         return when (args.size) {
-            2 -> listOf("10", "20", "50").filter { it.startsWith(args[1]) }
+            3 -> listOf("10", "20", "50").filter { it.startsWith(args[2]) }
             else -> emptyList()
         }
     }

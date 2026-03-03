@@ -27,10 +27,8 @@ class InsureInvCommand(
             put("buy", BuyCommand())
             put("toggle", ToggleCommand())
             put("info", InfoCommand())
-            put("set", SetCommand())
-            put("setprice", SetPriceCommand())
-            put("setmax", SetMaxCommand())
-            put("reload", ReloadCommand())
+            put("usage", UsageCommand())
+            put("config", ConfigCommand())
 
             put("setlang", SetLangCommand(plugin.i18nManager))
             put("help", HelpCommand())

@@ -25,6 +25,9 @@ info:
 admin:
   set-success: "<color:#99ff94>✔</color> <white>成功 <dark_gray>▪ <white><color:#9ce8ff>{player}</color>のチャージを<color:#9ce8ff>{amount}</color>に設定しました。"
   toggle-success: "<color:#99ff94>✔</color> <white>成功 <dark_gray>▪ <white><color:#9ce8ff>{player}</color>の保護を<color:#9ce8ff>{status}</color>に切り替えました。"
+  give-success: "<color:#99ff94>✔</color> <white>成功 <dark_gray>▪ <white><color:#9ce8ff>{player}</color>に<color:#9ce8ff>{amount}</color>回分のチャージを付与しました。現在<color:#9ce8ff>{charges}</color>/{max}回です。"
+  give-max-exceeded: "<gradient:#ff7817:#ffc46b>チャージを付与できません！<color:#ffc885>{player}</color>はあと<color:#ffc885>{amount}</color>回分しか受け取れません。</gradient>"
+  reset-success: "<color:#99ff94>✔</color> <white>成功 <dark_gray>▪ <white><color:#9ce8ff>{player}</color>のチャージを0にリセットしました。"
   price-updated: "<color:#99ff94>✔</color> <white>成功 <dark_gray>▪ <white>チャージ単価を<color:#9ce8ff>${price}</color>に更新しました。"
   max-updated: "<color:#99ff94>✔</color> <white>成功 <dark_gray>▪ <white>プレイヤーあたりの最大チャージを<color:#9ce8ff>{max}</color>に更新しました。"
 
@@ -46,19 +49,27 @@ error:
 
 usage:
   buy: "<gradient:#ff7817:#ffc46b>使い方：<color:#9ce8ff>/insureinv buy <数量></color></gradient>"
-  set: "<gradient:#ff7817:#ffc46b>使い方：<color:#9ce8ff>/insureinv set <プレイヤー> <数量></color></gradient>"
-  setprice: "<gradient:#ff7817:#ffc46b>使い方：<color:#9ce8ff>/insureinv setprice <金額></color></gradient>"
-  setmax: "<gradient:#ff7817:#ffc46b>使い方：<color:#9ce8ff>/insureinv setmax <数量></color></gradient>"
+  set: "<gradient:#ff7817:#ffc46b>使い方：<color:#9ce8ff>/insureinv usage set <プレイヤー> <数量></color></gradient>"
+  give: "<gradient:#ff7817:#ffc46b>使い方：<color:#9ce8ff>/insureinv usage give <プレイヤー> <数量></color></gradient>"
+  reset: "<gradient:#ff7817:#ffc46b>使い方：<color:#9ce8ff>/insureinv usage reset <プレイヤー></color></gradient>"
+  setprice: "<gradient:#ff7817:#ffc46b>使い方：<color:#9ce8ff>/insureinv config setprice <金額></color></gradient>"
+  setmax: "<gradient:#ff7817:#ffc46b>使い方：<color:#9ce8ff>/insureinv config setmax <数量></color></gradient>"
+  usage-group: "<gradient:#ff7817:#ffc46b>使い方：<color:#9ce8ff>/insureinv usage <set|give|reset></color></gradient>"
+  config-group: "<gradient:#ff7817:#ffc46b>使い方：<color:#9ce8ff>/insureinv config <setprice|setmax|reload></color></gradient>"
 
 help:
   header: "<gradient:#FFFFFF:#c9f505>━━━━━━━━━━━━ InsureInvPlugin ヘルプ ({page}/{total}) ━━━━━━━━━━━━</gradient>"
   buy: "<dark_gray>▪ <color:#9ce8ff>/insureinv buy <数量></color> <dark_gray>-</dark_gray> <white>保護チャージを購入する</white>"
   toggle: "<dark_gray>▪ <color:#9ce8ff>/insureinv toggle [プレイヤー]</color> <dark_gray>-</dark_gray> <white>インベントリ保護を切り替える</white>"
   info: "<dark_gray>▪ <color:#9ce8ff>/insureinv info [プレイヤー]</color> <dark_gray>-</dark_gray> <white>チャージと保護状態を表示</white>"
-  set: "<dark_gray>▪ <color:#9ce8ff>/insureinv set <プレイヤー> <数量></color> <dark_gray>-</dark_gray> <white>プレイヤーのチャージを設定（管理者）</white>"
-  setprice: "<dark_gray>▪ <color:#9ce8ff>/insureinv setprice <金額></color> <dark_gray>-</dark_gray> <white>チャージ単価を変更（管理者）</white>"
-  setmax: "<dark_gray>▪ <color:#9ce8ff>/insureinv setmax <数量></color> <dark_gray>-</dark_gray> <white>最大チャージ数を変更（管理者）</white>"
-  reload: "<dark_gray>▪ <color:#9ce8ff>/insureinv reload</color> <dark_gray>-</dark_gray> <white>設定をリロード（管理者）</white>"
+  usage: "<gradient:#FFFFFF:#c9f505>━━━ 管理コマンド (管理者) ━━━</gradient>"
+  usage-set: "<dark_gray>  ▪ <color:#9ce8ff>/insureinv usage set <プレイヤー> <数量></color> <dark_gray>-</dark_gray> <white>プレイヤーのチャージを設定</white>"
+  usage-give: "<dark_gray>  ▪ <color:#9ce8ff>/insureinv usage give <プレイヤー> <数量></color> <dark_gray>-</dark_gray> <white>プレイヤーにチャージを付与</white>"
+  usage-reset: "<dark_gray>  ▪ <color:#9ce8ff>/insureinv usage reset <プレイヤー></color> <dark_gray>-</dark_gray> <white>プレイヤーのチャージをリセット</white>"
+  config: "<gradient:#FFFFFF:#c9f505>━━━ 設定コマンド (管理者) ━━━</gradient>"
+  config-setprice: "<dark_gray>  ▪ <color:#9ce8ff>/insureinv config setprice <金額></color> <dark_gray>-</dark_gray> <white>チャージ単価を変更</white>"
+  config-setmax: "<dark_gray>  ▪ <color:#9ce8ff>/insureinv config setmax <数量></color> <dark_gray>-</dark_gray> <white>最大チャージ数を変更</white>"
+  config-reload: "<dark_gray>  ▪ <color:#9ce8ff>/insureinv config reload</color> <dark_gray>-</dark_gray> <white>設定をリロード</white>"
   help: "<dark_gray>▪ <color:#9ce8ff>/insureinv help [ページ]</color> <dark_gray>-</dark_gray> <white>ヘルプ情報を表示</white>"
   footer: "<gradient:#FFFFFF:#c9f505>━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</gradient>"
 

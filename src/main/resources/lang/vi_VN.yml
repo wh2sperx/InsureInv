@@ -25,6 +25,9 @@ info:
 admin:
   set-success: "<color:#99ff94>✔</color> <white>ᴛʜàɴʜ ᴄôɴɢ <dark_gray>▪ <white>Đặᴛ số ʟầɴ ᴄủᴀ <color:#9ce8ff>{player}</color> ᴛʜàɴʜ <color:#9ce8ff>{amount}</color>."
   toggle-success: "<color:#99ff94>✔</color> <white>ᴛʜàɴʜ ᴄôɴɢ <dark_gray>▪ <white>Đổɪ ᴛʀạɴɢ ᴛʜáɪ ʙảᴏ ᴠệ ᴛʜàɴʜ <color:#9ce8ff>{status}</color> ᴄʜᴏ <color:#9ce8ff>{player}</color>."
+  give-success: "<color:#99ff94>✔</color> <white>ᴛʜàɴʜ ᴄôɴɢ <dark_gray>▪ <white>Đã ᴄấᴘ <color:#9ce8ff>{amount}</color> ʟầɴ ᴄʜᴏ <color:#9ce8ff>{player}</color>. ʜɪệɴ ᴄó <color:#9ce8ff>{charges}</color>/{max}."
+  give-max-exceeded: "<gradient:#ff7817:#ffc46b>ᴋʜôɴɢ ᴛʜể ᴄấᴘ! <color:#ffc885>{player}</color> ᴄʜỉ ᴄó ᴛʜể ɴʜậɴ ᴛʜêᴍ <color:#ffc885>{amount}</color> ʟầɴ ɴữᴀ.</gradient>"
+  reset-success: "<color:#99ff94>✔</color> <white>ᴛʜàɴʜ ᴄôɴɢ <dark_gray>▪ <white>Đặᴛ ʟạɪ số ʟầɴ ᴄủᴀ <color:#9ce8ff>{player}</color> ᴠề 0."
   price-updated: "<color:#99ff94>✔</color> <white>ᴛʜàɴʜ ᴄôɴɢ <dark_gray>▪ <white>ɢɪá ᴍỗɪ ʟầɴ ᴄậᴘ ɴʜậᴘ ᴛʜàɴʜ <color:#9ce8ff>${price}</color>."
   max-updated: "<color:#99ff94>✔</color> <white>ᴛʜàɴʜ ᴄôɴɢ <dark_gray>▪ <white>số ʟầɴ ᴛốɪ đᴀ ᴍỗɪ ɴɢườɪ ᴄʜơɪ ᴄậᴘ ɴʜậᴘ ᴛʜàɴʜ <color:#9ce8ff>{max}</color>."
 
@@ -46,19 +49,27 @@ error:
 
 usage:
   buy: "<gradient:#ff7817:#ffc46b>sử ᴅụɴɢ: <color:#9ce8ff>/ɪɴsᴜʀᴇɪɴᴠ ʙᴜʏ <số ʟượɴɢ></color></gradient>"
-  set: "<gradient:#ff7817:#ffc46b>sử ᴅụɴɢ: <color:#9ce8ff>/ɪɴsᴜʀᴇɪɴᴠ sᴇᴛ <ɴɢườɪ ᴄʜơɪ> <số ʟượɴɢ></color></gradient>"
-  setprice: "<gradient:#ff7817:#ffc46b>sử ᴅụɴɢ: <color:#9ce8ff>/ɪɴsᴜʀᴇɪɴᴠ sᴇᴛᴘʀɪᴄᴇ <số ᴛɪềɴ></color></gradient>"
-  setmax: "<gradient:#ff7817:#ffc46b>sử ᴅụɴɢ: <color:#9ce8ff>/ɪɴsᴜʀᴇɪɴᴠ sᴇᴛᴍᴀx <số ʟượɴɢ></color></gradient>"
+  set: "<gradient:#ff7817:#ffc46b>sử ᴅụɴɢ: <color:#9ce8ff>/ɪɴsᴜʀᴇɪɴᴠ ᴜsᴀɢᴇ sᴇᴛ <ɴɢườɪ ᴄʜơɪ> <số ʟượɴɢ></color></gradient>"
+  give: "<gradient:#ff7817:#ffc46b>sử ᴅụɴɢ: <color:#9ce8ff>/ɪɴsᴜʀᴇɪɴᴠ ᴜsᴀɢᴇ ɢɪᴠᴇ <ɴɢườɪ ᴄʜơɪ> <số ʟượɴɢ></color></gradient>"
+  reset: "<gradient:#ff7817:#ffc46b>sử ᴅụɴɢ: <color:#9ce8ff>/ɪɴsᴜʀᴇɪɴᴠ ᴜsᴀɢᴇ ʀᴇsᴇᴛ <ɴɢườɪ ᴄʜơɪ></color></gradient>"
+  setprice: "<gradient:#ff7817:#ffc46b>sử ᴅụɴɢ: <color:#9ce8ff>/ɪɴsᴜʀᴇɪɴᴠ ᴄᴏɴꜰɪɢ sᴇᴛᴘʀɪᴄᴇ <số ᴛɪềɴ></color></gradient>"
+  setmax: "<gradient:#ff7817:#ffc46b>sử ᴅụɴɢ: <color:#9ce8ff>/ɪɴsᴜʀᴇɪɴᴠ ᴄᴏɴꜰɪɢ sᴇᴛᴍᴀx <số ʟượɴɢ></color></gradient>"
+  usage-group: "<gradient:#ff7817:#ffc46b>sử ᴅụɴɢ: <color:#9ce8ff>/ɪɴsᴜʀᴇɪɴᴠ ᴜsᴀɢᴇ <sᴇᴛ|ɢɪᴠᴇ|ʀᴇsᴇᴛ></color></gradient>"
+  config-group: "<gradient:#ff7817:#ffc46b>sử ᴅụɴɢ: <color:#9ce8ff>/ɪɴsᴜʀᴇɪɴᴠ ᴄᴏɴꜰɪɢ <sᴇᴛᴘʀɪᴄᴇ|sᴇᴛᴍᴀx|ʀᴇʟᴏᴀᴅ></color></gradient>"
 
 help:
   header: "<gradient:#FFFFFF:#c9f505>━━━━━━━━━━━━ ᴛʀợ ɢɪúᴘ ɪɴsᴜʀᴇɪɴᴠ ({page}/{total}) ━━━━━━━━━━━━</gradient>"
   buy: "<dark_gray>▪ <color:#9ce8ff>/ɪɴsᴜʀᴇɪɴᴠ ʙᴜʏ <số ʟượɴɢ></color> <dark_gray>-</dark_gray> <white>ᴍᴜᴀ ʟầɴ ʙảᴏ ᴠệ ᴛúɪ đồ</white>"
   toggle: "<dark_gray>▪ <color:#9ce8ff>/ɪɴsᴜʀᴇɪɴᴠ ᴛᴏɢɢʟᴇ [ɴɢườɪ ᴄʜơɪ]</color> <dark_gray>-</dark_gray> <white>ʙậᴛ/ᴛắᴛ ʙảᴏ ᴠệ ᴛúɪ đồ</white>"
   info: "<dark_gray>▪ <color:#9ce8ff>/ɪɴsᴜʀᴇɪɴᴠ ɪɴꜰᴏ [ɴɢườɪ ᴄʜơɪ]</color> <dark_gray>-</dark_gray> <white>xᴇᴍ số ʟầɴ ᴠà ᴛʀạɴɢ ᴛʜáɪ ʙảᴏ ᴠệ</white>"
-  set: "<dark_gray>▪ <color:#9ce8ff>/ɪɴsᴜʀᴇɪɴᴠ sᴇᴛ <ɴɢườɪ ᴄʜơɪ> <số ʟượɴɢ></color> <dark_gray>-</dark_gray> <white>Đặᴛ số ʟầɴ ᴄʜᴏ ɴɢườɪ ᴄʜơɪ (ᴀᴅᴍɪɴ)</white>"
-  setprice: "<dark_gray>▪ <color:#9ce8ff>/ɪɴsᴜʀᴇɪɴᴠ sᴇᴛᴘʀɪᴄᴇ <số ᴛɪềɴ></color> <dark_gray>-</dark_gray> <white>ᴄậᴘ ɴʜậᴘ ɢɪá ᴍỗɪ ʟầɴ (ᴀᴅᴍɪɴ)</white>"
-  setmax: "<dark_gray>▪ <color:#9ce8ff>/ɪɴsᴜʀᴇɪɴᴠ sᴇᴛᴍᴀx <số ʟượɴɢ></color> <dark_gray>-</dark_gray> <white>ᴄậᴘ ɴʜậᴘ số ʟầɴ ᴛốɪ đᴀ (ᴀᴅᴍɪɴ)</white>"
-  reload: "<dark_gray>▪ <color:#9ce8ff>/ɪɴsᴜʀᴇɪɴᴠ ʀᴇʟᴏᴀᴅ</color> <dark_gray>-</dark_gray> <white>ᴛảɪ ʟạɪ ᴄấᴜ ʜìɴʜ (ᴀᴅᴍɪɴ)</white>"
+  usage: "<gradient:#FFFFFF:#c9f505>━━━ ʟệɴʜ Qᴜảɴ ʟý (ᴀᴅᴍɪɴ) ━━━</gradient>"
+  usage-set: "<dark_gray>  ▪ <color:#9ce8ff>/ɪɴsᴜʀᴇɪɴᴠ ᴜsᴀɢᴇ sᴇᴛ <ɴɢườɪ ᴄʜơɪ> <số ʟượɴɢ></color> <dark_gray>-</dark_gray> <white>Đặᴛ số ʟầɴ ᴄʜᴏ ɴɢườɪ ᴄʜơɪ</white>"
+  usage-give: "<dark_gray>  ▪ <color:#9ce8ff>/ɪɴsᴜʀᴇɪɴᴠ ᴜsᴀɢᴇ ɢɪᴠᴇ <ɴɢườɪ ᴄʜơɪ> <số ʟượɴɢ></color> <dark_gray>-</dark_gray> <white>ᴄấᴘ số ʟầɴ ᴄʜᴏ ɴɢườɪ ᴄʜơɪ</white>"
+  usage-reset: "<dark_gray>  ▪ <color:#9ce8ff>/ɪɴsᴜʀᴇɪɴᴠ ᴜsᴀɢᴇ ʀᴇsᴇᴛ <ɴɢườɪ ᴄʜơɪ></color> <dark_gray>-</dark_gray> <white>Đặᴛ ʟạɪ số ʟầɴ ᴄʜᴏ ɴɢườɪ ᴄʜơɪ</white>"
+  config: "<gradient:#FFFFFF:#c9f505>━━━ ʟệɴʜ ᴄấᴜ ʜìɴʜ (ᴀᴅᴍɪɴ) ━━━</gradient>"
+  config-setprice: "<dark_gray>  ▪ <color:#9ce8ff>/ɪɴsᴜʀᴇɪɴᴠ ᴄᴏɴꜰɪɢ sᴇᴛᴘʀɪᴄᴇ <số ᴛɪềɴ></color> <dark_gray>-</dark_gray> <white>ᴄậᴘ ɴʜậᴘ ɢɪá ᴍỗɪ ʟầɴ</white>"
+  config-setmax: "<dark_gray>  ▪ <color:#9ce8ff>/ɪɴsᴜʀᴇɪɴᴠ ᴄᴏɴꜰɪɢ sᴇᴛᴍᴀx <số ʟượɴɢ></color> <dark_gray>-</dark_gray> <white>ᴄậᴘ ɴʜậᴘ số ʟầɴ ᴛốɪ đᴀ</white>"
+  config-reload: "<dark_gray>  ▪ <color:#9ce8ff>/ɪɴsᴜʀᴇɪɴᴠ ᴄᴏɴꜰɪɢ ʀᴇʟᴏᴀᴅ</color> <dark_gray>-</dark_gray> <white>ᴛảɪ ʟạɪ ᴄấᴜ ʜìɴʜ</white>"
   help: "<dark_gray>▪ <color:#9ce8ff>/ɪɴsᴜʀᴇɪɴᴠ ʜᴇʟᴘ [ᴛʀᴀɴɢ]</color> <dark_gray>-</dark_gray> <white>ʜɪểɴ ᴛʜị ᴛʜôɴɢ ᴛɪɴ ᴛʀợ ɢɪúᴘ</white>"
   footer: "<gradient:#FFFFFF:#c9f505>━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</gradient>"
 
