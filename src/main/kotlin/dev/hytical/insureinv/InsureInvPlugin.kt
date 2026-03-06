@@ -39,10 +39,10 @@ open class InsureInvPlugin : JavaPlugin() {
 
     override fun onEnable() {
         val serverType = EnvironmentDetector.detect()
-        if (serverType == ServerPlatform.SPIGOT || serverType == ServerPlatform.UNKNOWN) {
+        if (serverType == ServerPlatform.UNKNOWN) {
             logger.severe("═══════════════════════════════════════════════════════════════")
-            logger.severe("InsureInvPlugin requires Paper or Folia to run.")
-            logger.severe("Spigot and other server software are not supported.")
+            logger.severe("InsureInv requires Paper, Spigot or Folia to run ( including forks ).")
+            logger.severe("Non-bukkit and other server software are not supported.")
             logger.severe("Please upgrade to Paper: https://papermc.io/downloads/paper")
             logger.severe("═══════════════════════════════════════════════════════════════")
             server.pluginManager.disablePlugin(this)
@@ -83,7 +83,7 @@ open class InsureInvPlugin : JavaPlugin() {
         registerCommands()
         registerEvents()
 
-        logger.info("InsureInvPlugin v${this.pluginMeta.version} enabled successfully! Have Fun :D")
+        logger.info("InsureInv v${this.pluginMeta.version} enabled successfully! Have Fun :D")
         sendStartupLog()
     }
 
@@ -96,7 +96,7 @@ open class InsureInvPlugin : JavaPlugin() {
             storageManager.shutdown()
         }
 
-        logger.info("InsureInvPlugin disabled.")
+        logger.info("InsureInv disabled.")
     }
 
     fun reloadI18n() {
