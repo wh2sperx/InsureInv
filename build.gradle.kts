@@ -60,17 +60,19 @@ repositories {
     maven("https://repo.helpch.at/releases")
     maven("https://repo.tcoded.com/releases")
     maven("https://repo.rosewooddev.io/repository/public/")
+    maven("https://repo.codemc.io/repository/creatorfromhell/")
     mavenCentral()
 }
 
 val coroutinesVersion: String by project
 
 dependencies {
-    compileOnly("io.papermc.paper:paper-api:1.21.8-R0.1-SNAPSHOT")
+    compileOnly("io.papermc.paper:paper-api:1.21.10-R0.1-SNAPSHOT")
     compileOnly("com.github.MilkBowl:VaultAPI:1.7.1")
     compileOnly("me.clip:placeholderapi:2.11.6")
     compileOnly("org.black_ixx:playerpoints:3.3.3")
     compileOnly("com.zaxxer:HikariCP:5.1.0")
+    compileOnly("net.milkbowl.vault:VaultUnlockedAPI:2.16")
     compileOnly("com.mysql:mysql-connector-j:8.3.0")
     compileOnly("org.xerial:sqlite-jdbc:3.45.1.0")
     compileOnly("com.google.code.gson:gson:2.10.1")

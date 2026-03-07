@@ -23,7 +23,7 @@ storage:
     path: data.json
 
 economy:
-  # Available provider: VAULT, PLAYER_POINTS, NONE ( disable economy feature! )
+  # Available provider: VAULT, VAULT_UNLOCKED, PLAYER_POINTS, NONE ( disable economy feature! )
   provider: VAULT
   price-per-charge: 100.0
   max-charges-per-player: 10

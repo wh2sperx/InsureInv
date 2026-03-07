@@ -70,7 +70,7 @@ open class InsureInvPlugin : JavaPlugin() {
 
         messageManager = MessageManager(this, configManager)
 
-        economyManager = EconomyManager(this)
+        economyManager = EconomyManager(this, serverType)
         economyManager.initialize()
 
         storageManager = StorageManager(this, configManager)

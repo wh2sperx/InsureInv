@@ -1,15 +1,17 @@
 package dev.hytical.insureinv.economy
 
 import dev.hytical.insureinv.InsureInvPlugin
+import dev.hytical.insureinv.metrics.ServerPlatform
 import org.bukkit.OfflinePlayer
 
 class EconomyManager(
-    private val plugin: InsureInvPlugin
+    private val plugin: InsureInvPlugin,
+    private val platform: ServerPlatform
 ) {
     private lateinit var provider: EconomyProvider
 
     fun initialize() {
-        provider = EconomyRegistry(plugin).resolve()
+        provider = EconomyRegistry(plugin, platform).resolve()
     }
 
     fun isAvailable(): Boolean {
