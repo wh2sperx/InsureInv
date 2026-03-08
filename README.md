@@ -73,7 +73,7 @@ The `config.yml` file is straightforward to set up out of the box.
 ### `economy` Options
 Controls how players acquire charges:
 - `VAULT` (Default): Hooks into your Vault-compatible economy plugin (EssentialsX, etc). **Not available on Folia.**
-- `VAULT_UNLOCKED`: Hooks into [VaultUnlocked](https://github.com/VaultUnlocked/VaultUnlocked), a modern fork of Vault with **Folia support**.
+- `VAULT_UNLOCKED`: Hooks into [VaultUnlocked](https://www.spigotmc.org/resources/vaultunlocked.117277/), a modern fork of Vault with **Folia support**.
 - `PLAYER_POINTS`: Deducts from [PlayerPoints](https://www.spigotmc.org/resources/playerpoints.80745/). Works on all platforms.
 - `NONE`: No economy features. Commands like `/insureinv buy` are disabled. Useful if admins want to hand out charges directly via scripts or crates.
 
