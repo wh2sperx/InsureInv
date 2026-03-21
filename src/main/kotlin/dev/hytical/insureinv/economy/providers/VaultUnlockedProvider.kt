@@ -31,8 +31,12 @@ class VaultUnlockedProvider(
     companion object {
         fun create(): VaultUnlockedProvider? {
             val pm = Bukkit.getPluginManager()
-
-            val vaultUnlocked = pm.getPlugin("VaultUnlocked") ?: return null
+            /*
+             Rename from "VaultUnlocked" to "Vault", because VaultUnlocked still uses the name Vault, so in this
+             case it will always return null, causing it to be unable to hook
+             into the provider on Folia. Sorry my bad
+             */
+            val vaultUnlocked = pm.getPlugin("Vault") ?: return null
             if (!vaultUnlocked.isEnabled) return null
 
             val rsp = Bukkit.getServicesManager()
