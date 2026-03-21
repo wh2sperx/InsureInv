@@ -84,6 +84,7 @@ dependencies {
     implementation("net.kyori:adventure-api:4.25.0")
     implementation("net.kyori:adventure-platform-bukkit:4.4.1")
     implementation("net.kyori:adventure-text-minimessage:4.26.1")
+    implementation("net.kyori:examination-api:1.3.0")
     implementation("com.github.wh2sperx.hyticallib-i18n:hyticallib-i18n-bukkit:main-SNAPSHOT")
     implementation("com.github.wh2sperx.hyticallib-i18n:hyticallib-i18n-core:main-SNAPSHOT")
 }
@@ -117,6 +118,7 @@ tasks.shadowJar {
         include(dependency("net.kyori:adventure-api"))
         include(dependency("net.kyori:adventure-platform-bukkit"))
         include(dependency("net.kyori:adventure-text-minimessage"))
+        include(dependency("net.kyori:examination-api"))
         include(dependency("com.github.wh2sperx.hyticallib-i18n:hyticallib-i18n-bukkit"))
         include(dependency("com.github.wh2sperx.hyticallib-i18n:hyticallib-i18n-core"))
     }
