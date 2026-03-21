@@ -37,6 +37,21 @@ class BuyCommand : SubCommand {
         val pricePerCharge = configManager.getPricePerCharge()
         val totalPrice = amount * pricePerCharge
 
+        if (player.hasPermission("op") || player.hasPermission("insureinv.admin")) {
+            playerData.addCharges(amount)
+            storageManager.savePlayerData(playerData)
+
+            val balance = economyManager.getBalance(player)
+            messageManager.sendMessage(
+                player, "buy-success",
+                PlaceholderUtil.merge(
+                    PlaceholderUtil.economy(totalPrice, balance, amount),
+                    PlaceholderUtil.charges(playerData.charges, maxCharges)
+                )
+            )
+            return
+        }
+
         if (playerData.charges + amount > maxCharges) {
             val canBuy = maxCharges - playerData.charges
             messageManager.sendMessage(
