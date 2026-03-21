@@ -81,11 +81,6 @@ dependencies {
 
     implementation("org.bstats:bstats-bukkit:3.1.0")
     implementation("com.tcoded:FoliaLib:0.4.3")
-    implementation("net.kyori:adventure-api:4.25.0")
-    implementation("net.kyori:adventure-platform-bukkit:4.4.1")
-    implementation("net.kyori:adventure-text-minimessage:4.26.1")
-    implementation("net.kyori:examination-api:1.3.0")
-    implementation("net.kyori:adventure-key:4.26.1")
     implementation("com.github.wh2sperx.hyticallib-i18n:hyticallib-i18n-bukkit:main-SNAPSHOT")
     implementation("com.github.wh2sperx.hyticallib-i18n:hyticallib-i18n-core:main-SNAPSHOT")
 }
@@ -116,18 +111,12 @@ tasks.shadowJar {
         include(dependency("com.tcoded:FoliaLib"))
         include(dependency("org.bstats:bstats-bukkit"))
         include(dependency("org.bstats:bstats-base"))
-        include(dependency("net.kyori:adventure-api"))
-        include(dependency("net.kyori:adventure-platform-bukkit"))
-        include(dependency("net.kyori:adventure-text-minimessage"))
-        include(dependency("net.kyori:examination-api"))
-        include(dependency("net.kyori:adventure-key"))
         include(dependency("com.github.wh2sperx.hyticallib-i18n:hyticallib-i18n-bukkit"))
         include(dependency("com.github.wh2sperx.hyticallib-i18n:hyticallib-i18n-core"))
     }
 
     relocate("com.tcoded.folialib", "dev.hytical.insureinv.libs.folialib")
     relocate("org.bstats", "dev.hytical.insureinv.libs.bstats")
-    relocate("net.kyori", "dev.hytical.insureinv.libs.kyori")
     
     relocate("dev.hytical.i18n", "dev.hytical.insureinv.libs.i18n") {
         include("dev.hytical.i18n.**")

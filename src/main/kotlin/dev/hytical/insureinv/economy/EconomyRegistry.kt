@@ -24,8 +24,8 @@ class EconomyRegistry(
             )
             else -> listOf(
                 EconomyType.VAULT,
-                EconomyType.VAULT_UNLOCKED,
                 EconomyType.PLAYER_POINTS,
+                EconomyType.VAULT_UNLOCKED,
                 EconomyType.NONE
             )
         }

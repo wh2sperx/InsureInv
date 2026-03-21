@@ -39,10 +39,10 @@ open class InsureInvPlugin : JavaPlugin() {
 
     override fun onEnable() {
         val serverType = EnvironmentDetector.detect()
-        if (serverType == ServerPlatform.UNKNOWN) {
+        if (serverType == ServerPlatform.UNKNOWN || serverType == ServerPlatform.SPIGOT) {
             logger.severe("═══════════════════════════════════════════════════════════════")
-            logger.severe("InsureInv requires Paper, Spigot or Folia to run ( including forks ).")
-            logger.severe("Non-bukkit and other server software are not supported.")
+            logger.severe("InsureInv requires Paper or Folia to run ( including forks ).")
+            logger.severe("Spigot, non-bukkit and other server software are not supported.")
             logger.severe("Please upgrade to Paper: https://papermc.io/downloads/paper")
             logger.severe("═══════════════════════════════════════════════════════════════")
             server.pluginManager.disablePlugin(this)
