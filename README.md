@@ -2,10 +2,9 @@
 
 # InsureInv
 
-[![Codeberg](https://img.shields.io/badge/hosted-Codeberg-2185D0?logo=codeberg)](https://codeberg.org/qhuy1123/InsureInv)
 [![Modrinth](https://img.shields.io/badge/available-Modrinth-00AF5C?logo=modrinth)](https://modrinth.com/plugin/insureinv)
 [![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
-[![hyticallib-i18n](https://img.shields.io/badge/dependency-JitPack-6B8E4C)](https://jitpack.io/#org.codeberg.qhuy1123/hyticallib-i18n)
+[![hyticallib-i18n](https://jitpack.io/v/wh2sperx/hyticallib-i18n.svg)](https://jitpack.io/#wh2sperx/hyticallib-i18n)
 
 **A flexible, charge-based inventory protection plugin for modern Minecraft servers.**
 
@@ -119,8 +118,6 @@ InsureInv is built using **Gradle** (Kotlin DSL).
    - On Linux/macOS: `./gradlew build`
    - On Windows: `gradlew.bat build`
 5. The compiled plugin jar will be generated inside the `build/libs` folder with a name like `insureinv-[version]+[git-commit-hash].jar`.
-
-Our build process automatically shades and auto-relocates required libraries (like FoliaLib, bStats, and hyticallib-i18n) to prevent dependency conflicts with other plugins.
 
 ---
 
