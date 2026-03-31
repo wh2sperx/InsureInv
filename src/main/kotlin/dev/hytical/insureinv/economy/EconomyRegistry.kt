@@ -49,7 +49,7 @@ class EconomyRegistry(
         }
 
         for (type in priorityList) {
-            if (type == preferred || type == EconomyType.NONE) continue
+            if (type == EconomyType.NONE) continue
             createProvider(type)?.let {
                 logger.info("Using economy provider: $type")
                 return it
