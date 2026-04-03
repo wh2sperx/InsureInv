@@ -61,8 +61,7 @@ class EconomyRegistry(
     }
 
     private fun isCompatible(type: EconomyType): Boolean {
-        if (platform == ServerPlatform.FOLIA && type == EconomyType.VAULT) return false
-        return true
+        return !(platform == ServerPlatform.FOLIA && type == EconomyType.VAULT)
     }
 
     private fun createProvider(type: EconomyType): EconomyProvider? {

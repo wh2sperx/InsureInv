@@ -17,8 +17,8 @@ import dev.hytical.insureinv.utils.PluginBuildInfo
 import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer
 import org.bukkit.plugin.java.JavaPlugin
 
+private const val PLUGIN_ID: Int = 29775
 open class InsureInvPlugin : JavaPlugin() {
-    private val pluginId: Int = 29775
 
     lateinit var pluginBuildInfo: PluginBuildInfo
         private set
@@ -61,7 +61,7 @@ open class InsureInvPlugin : JavaPlugin() {
 
         configManager = ConfigManager(this)
 
-        metricsManager = MetricsManager(this, pluginId)
+        metricsManager = MetricsManager(this, PLUGIN_ID)
         metricsManager.start()
 
         i18nManager = I18nManager(this, configManager.getDefaultLanguage())
@@ -100,7 +100,7 @@ open class InsureInvPlugin : JavaPlugin() {
     }
 
     fun reloadI18n() {
-        i18nManager.rebuild()
+        if(::i18nManager.isInitialized) { i18nManager.rebuild() }
     }
 
     private fun registerCommands() {

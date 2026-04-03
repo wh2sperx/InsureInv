@@ -2,7 +2,6 @@ package dev.hytical.insureinv.metrics
 
 import dev.hytical.insureinv.InsureInvPlugin
 import dev.hytical.insureinv.metrics.detectors.EnvironmentDetector
-import dev.hytical.insureinv.metrics.detectors.SystemInfo
 import org.bstats.bukkit.Metrics
 import org.bstats.charts.DrilldownPie
 import org.bstats.charts.SimplePie
@@ -22,100 +21,100 @@ class MetricsManager(
         }
 
         if (!started.compareAndSet(false, true)) return
-        val metrics = Metrics(plugin, pluginId)
 
-        registerServerEnvironmentChart(metrics)
-        registerPluginVersionChart(metrics)
-        registerSystemEnvironmentChart(metrics)
-        registerOnlineModeChart(metrics)
-        registerJavaVersionChart(metrics)
-        registerPlayerCountChart(metrics)
-        registerOSArchitectureChart(metrics)
+        Metrics(plugin, pluginId).also { metrics ->
+            registerServerEnvironment(metrics)
+            registerPluginVersion(metrics)
+            registerOnlineMode(metrics)
+            registerJavaInfo(metrics)
+            registerPlayerCount(metrics)
+            registerOsArchitecture(metrics)
+            registerTimezone(metrics)
+        }
 
         plugin.logger.info("bStats metrics enabled.")
     }
 
-    private fun registerServerEnvironmentChart(metrics: Metrics) {
+    private fun registerServerEnvironment(metrics: Metrics) {
         metrics.addCustomChart(
             DrilldownPie("server_environment") {
                 mapOf(
-                    EnvironmentDetector.detect().name to
-                            mapOf(Bukkit.getVersion() to 1)
+                    EnvironmentDetector.detect().name to mapOf(Bukkit.getVersion() to 1)
                 )
             }
         )
     }
 
-    private fun registerPluginVersionChart(metrics: Metrics) {
+    private fun registerPluginVersion(metrics: Metrics) {
         metrics.addCustomChart(
-            SimplePie("plugin_version") {
-                plugin.pluginMeta.version
-            }
+            SimplePie("plugin_version") { plugin.pluginMeta.version }
         )
     }
 
-    private fun registerSystemEnvironmentChart(metrics: Metrics) {
+    private fun registerOnlineMode(metrics: Metrics) {
         metrics.addCustomChart(
-            SimplePie("system_environment") {
-                SystemInfo.environmentInfo
-            }
+            SimplePie("online_mode") { if (Bukkit.getOnlineMode()) "Online" else "Offline" }
         )
     }
 
-    private fun registerOnlineModeChart(metrics: Metrics) {
-        metrics.addCustomChart(
-            SimplePie("online_mode") {
-                if (Bukkit.getOnlineMode()) "Online" else "Offline"
-            }
-        )
-    }
-
-    private fun registerJavaVersionChart(metrics: Metrics) {
+    private fun registerJavaInfo(metrics: Metrics) {
         metrics.addCustomChart(
             DrilldownPie("java_information") {
-                val vendor = System.getProperty("java.vendor") ?: "Unknown"
-                val version = System.getProperty("java.version") ?: "Unknown"
-                val bits = System.getProperty("sun.arch.data.model") ?: "Unknown"
-                val runtime = System.getProperty("java.runtime.name") ?: "Unknown"
-
                 mapOf(
                     "Java Details" to mapOf(
-                        "$runtime ($bits-bit)" to 1
+                        "${System.getProperty("java.runtime.name", "Unknown")} (${System.getProperty("sun.arch.data.model", "Unknown")}-bit)" to 1
                     ),
                     "Java Vendor" to mapOf(
-                        vendor to 1
+                        System.getProperty("java.vendor", "Unknown") to 1
                     ),
                     "Java Version" to mapOf(
-                        version to 1
+                        System.getProperty("java.version", "Unknown") to 1
                     )
                 )
             }
         )
     }
 
-    private fun registerPlayerCountChart(metrics: Metrics) {
+    private fun registerPlayerCount(metrics: Metrics) {
         metrics.addCustomChart(
             SimplePie("player_count_range") {
-                val onlineCount = Bukkit.getOnlinePlayers().size
+                val count = Bukkit.getOnlinePlayers().size
                 when {
-                    onlineCount == 0 -> "0"
-                    onlineCount <= 5 -> "1-5"
-                    onlineCount <= 10 -> "6-10"
-                    onlineCount <= 20 -> "11-20"
-                    onlineCount <= 50 -> "21-50"
-                    onlineCount <= 100 -> "51-100"
+                    count == 0 -> "0"
+                    count <= 5 -> "1-5"
+                    count <= 10 -> "6-10"
+                    count <= 20 -> "11-20"
+                    count <= 50 -> "21-50"
+                    count <= 100 -> "51-100"
                     else -> "100+"
                 }
             }
         )
     }
 
-    private fun registerOSArchitectureChart(metrics: Metrics) {
+    private fun registerOsArchitecture(metrics: Metrics) {
         metrics.addCustomChart(
             SimplePie("os_architecture") {
                 System.getProperty("os.arch")?.let { arch ->
                     if (arch.contains("64")) "64-bit" else "32-bit"
                 } ?: "Unknown"
+            }
+        )
+    }
+
+    private fun registerTimezone(metrics: Metrics) {
+        metrics.addCustomChart(
+            DrilldownPie("server_timezone") {
+                val tz = java.util.TimeZone.getDefault()
+                val tzId = tz.id
+                val continent = tzId.substringBefore('/').takeIf { it.isNotEmpty() } ?: run {
+                    when {
+                        tzId.startsWith("Atlantic/") -> "Atlantic"
+                        else -> "Other"
+                    }
+                }
+
+                mapOf(continent to mapOf(tzId to 1))
             }
         )
     }
