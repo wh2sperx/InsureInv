@@ -1,6 +1,6 @@
 package dev.hytical.insureinv.metrics
 
-import dev.hytical.insureinv.InsureInvPlugin
+import dev.hytical.insureinv.InsureInv
 import dev.hytical.insureinv.metrics.detectors.EnvironmentDetector
 import org.bstats.bukkit.Metrics
 import org.bstats.charts.DrilldownPie
@@ -9,7 +9,7 @@ import org.bukkit.Bukkit
 import java.util.concurrent.atomic.AtomicBoolean
 
 class MetricsManager(
-    private val plugin: InsureInvPlugin,
+    private val plugin: InsureInv,
     private val pluginId: Int
 ) {
     private val started = AtomicBoolean(false)
@@ -62,7 +62,12 @@ class MetricsManager(
             DrilldownPie("java_information") {
                 mapOf(
                     "Java Details" to mapOf(
-                        "${System.getProperty("java.runtime.name", "Unknown")} (${System.getProperty("sun.arch.data.model", "Unknown")}-bit)" to 1
+                        "${
+                            System.getProperty(
+                                "java.runtime.name",
+                                "Unknown"
+                            )
+                        } (${System.getProperty("sun.arch.data.model", "Unknown")}-bit)" to 1
                     ),
                     "Java Vendor" to mapOf(
                         System.getProperty("java.vendor", "Unknown") to 1

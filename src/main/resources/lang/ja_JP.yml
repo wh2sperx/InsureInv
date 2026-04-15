@@ -58,7 +58,7 @@ usage:
   config-group: "<gradient:#ff7817:#ffc46b>使い方：<color:#9ce8ff>/insureinv config <setprice|setmax|reload></color></gradient>"
 
 help:
-  header: "<gradient:#FFFFFF:#c9f505>━━━━━━━━━━━━ InsureInvPlugin ヘルプ ({page}/{total}) ━━━━━━━━━━━━</gradient>"
+  header: "<gradient:#FFFFFF:#c9f505>━━━━━━━━━━━━ InsureInv ヘルプ ({page}/{total}) ━━━━━━━━━━━━</gradient>"
   buy: "<dark_gray>▪ <color:#9ce8ff>/insureinv buy <数量></color> <dark_gray>-</dark_gray> <white>保護チャージを購入する</white>"
   toggle: "<dark_gray>▪ <color:#9ce8ff>/insureinv toggle [プレイヤー]</color> <dark_gray>-</dark_gray> <white>インベントリ保護を切り替える</white>"
   info: "<dark_gray>▪ <color:#9ce8ff>/insureinv info [プレイヤー]</color> <dark_gray>-</dark_gray> <white>チャージと保護状態を表示</white>"

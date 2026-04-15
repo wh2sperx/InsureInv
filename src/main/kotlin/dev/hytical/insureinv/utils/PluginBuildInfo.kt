@@ -1,12 +1,12 @@
 package dev.hytical.insureinv.utils
 
-import dev.hytical.insureinv.InsureInvPlugin
+import dev.hytical.insureinv.InsureInv
 import java.time.Instant
 import java.time.ZoneId
 import java.time.format.DateTimeFormatter
 import java.util.*
 
-class PluginBuildInfo(private val plugin: InsureInvPlugin) {
+class PluginBuildInfo(private val plugin: InsureInv) {
 
     data class GitInfo(
         val commitIdAbbrev: String,

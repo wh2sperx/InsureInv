@@ -1,4 +1,4 @@
-# InsureInvPlugin Configuration
+# InsureInv Configuration
 
 storage:
   method: sqlite
@@ -33,7 +33,7 @@ messages:
   prefix: "<gradient:#00d4ff:#0099ff><bold>[ ɪɴѕᴜʀᴇɪɴᴠ ]</bold></gradient> <dark_gray>»</dark_gray> <white>"
 
 i18n:
-  default-language: en_US
+  default-language: vi_VN
   preload-on-join: true
   invalidate-on-quit: true
 

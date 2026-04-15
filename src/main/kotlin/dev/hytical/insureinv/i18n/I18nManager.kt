@@ -5,7 +5,7 @@ import dev.hytical.i18n.LangRegistry
 import dev.hytical.i18n.LangService
 import dev.hytical.i18n.LangStorage
 import dev.hytical.i18n.bukkit.PdcLangStorage
-import dev.hytical.insureinv.InsureInvPlugin
+import dev.hytical.insureinv.InsureInv
 import org.bukkit.configuration.file.YamlConfiguration
 import java.io.File
 import java.io.FileInputStream
@@ -13,10 +13,11 @@ import java.util.concurrent.atomic.AtomicReference
 import java.util.logging.Logger
 
 class I18nManager(
-    private val plugin: InsureInvPlugin,
+    private val plugin: InsureInv,
     private val defaultLanguage: String = "en_US"
 ) {
     private val bootstrapRef = AtomicReference<I18nBootstrap>()
+
     @Volatile
     private var _storage: LangStorage? = null
     private val logger: Logger = plugin.logger

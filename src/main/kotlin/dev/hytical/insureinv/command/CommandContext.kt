@@ -1,6 +1,6 @@
 package dev.hytical.insureinv.command
 
-import dev.hytical.insureinv.InsureInvPlugin
+import dev.hytical.insureinv.InsureInv
 import dev.hytical.insureinv.economy.EconomyManager
 import dev.hytical.insureinv.i18n.MessageManager
 import dev.hytical.insureinv.managers.ConfigManager
@@ -11,7 +11,7 @@ import org.bukkit.entity.Player
 data class CommandContext(
     val sender: CommandSender,
     val args: Array<String>,
-    val plugin: InsureInvPlugin,
+    val plugin: InsureInv,
     val configManager: ConfigManager,
     val storageManager: StorageManager,
     val economyManager: EconomyManager,

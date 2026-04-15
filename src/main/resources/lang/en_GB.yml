@@ -58,7 +58,7 @@ usage:
   config-group: "<gradient:#ff7817:#ffc46b>Usage: <color:#9ce8ff>/insureinv config <setprice|setmax|reload></color></gradient>"
 
 help:
-  header: "<gradient:#FFFFFF:#c9f505>━━━━━━━━━━━━ InsureInvPlugin Help ({page}/{total}) ━━━━━━━━━━━━</gradient>"
+  header: "<gradient:#FFFFFF:#c9f505>━━━━━━━━━━━━ InsureInv Help ({page}/{total}) ━━━━━━━━━━━━</gradient>"
   buy: "<dark_gray>▪ <color:#9ce8ff>/insureinv buy <amount></color> <dark_gray>-</dark_gray> <white>Buy inventory protection charges</white>"
   toggle: "<dark_gray>▪ <color:#9ce8ff>/insureinv toggle [player]</color> <dark_gray>-</dark_gray> <white>Toggle inventory protection</white>"
   info: "<dark_gray>▪ <color:#9ce8ff>/insureinv info [player]</color> <dark_gray>-</dark_gray> <white>View charges and protection status</white>"

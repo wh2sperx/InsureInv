@@ -2,7 +2,7 @@ package dev.hytical.insureinv.storages.backend
 
 import com.zaxxer.hikari.HikariConfig
 import com.zaxxer.hikari.HikariDataSource
-import dev.hytical.insureinv.InsureInvPlugin
+import dev.hytical.insureinv.InsureInv
 import dev.hytical.insureinv.managers.ConfigManager
 import dev.hytical.insureinv.models.PlayerDataModel
 import dev.hytical.insureinv.storages.StorageBackend
@@ -13,7 +13,7 @@ import java.sql.ResultSet
 import java.util.*
 
 class MySqlStorage(
-    private val plugin: InsureInvPlugin,
+    private val plugin: InsureInv,
     private val configManager: ConfigManager
 ) : StorageBackend {
 
@@ -45,7 +45,7 @@ class MySqlStorage(
                 addDataSourceProperty("elideSetAutoCommits", "true")
                 addDataSourceProperty("maintainTimeStats", "false")
 
-                poolName = "InsureInvPlugin-MySQL-Pool"
+                poolName = "InsureInv-MySQL-Pool"
             }
 
             dataSource = HikariDataSource(config)

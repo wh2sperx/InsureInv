@@ -11,6 +11,7 @@ object EnvironmentDetector {
         classExists("io.papermc.paper.threadedregions.RegionizedServer") -> ServerPlatform.FOLIA
         classExists("io.papermc.paper.configuration.Configuration") ||
                 classExists("com.destroystokyo.paper.PaperConfig") -> ServerPlatform.PAPER
+
         classExists("org.spigotmc.SpigotConfig") -> ServerPlatform.SPIGOT
         else -> ServerPlatform.UNKNOWN
     }

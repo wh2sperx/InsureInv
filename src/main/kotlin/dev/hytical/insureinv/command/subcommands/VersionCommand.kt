@@ -1,13 +1,13 @@
 package dev.hytical.insureinv.command.subcommands
 
-import dev.hytical.insureinv.InsureInvPlugin
+import dev.hytical.insureinv.InsureInv
 import dev.hytical.insureinv.command.CommandContext
 import dev.hytical.insureinv.command.SubCommand
 import net.kyori.adventure.text.minimessage.MiniMessage
 import org.bukkit.command.CommandSender
 
 class VersionCommand(
-    private val plugin: InsureInvPlugin,
+    private val plugin: InsureInv,
 ) : SubCommand {
     private val mm = MiniMessage.miniMessage()
     private val i = plugin.pluginBuildInfo

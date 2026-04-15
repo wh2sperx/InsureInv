@@ -1,6 +1,6 @@
 name: '${name}'
 version: '${version}-${gitCommit}'
-main: dev.hytical.insureinv.InsureInvPlugin
+main: dev.hytical.insureinv.InsureInv
 api-version: '1.21'
 folia-supported: true
 authors: [ qhuyy ]
@@ -18,7 +18,7 @@ libraries:
 
 commands:
   insureinv:
-    description: Main InsureInvPlugin command
+    description: Main InsureInv command
     usage: /<command> <buy|toggle|info|usage|config|help> [args]
     aliases:
       - inv
@@ -26,10 +26,10 @@ commands:
 
 permissions:
   insureinv.use:
-    description: Allows using basic InsureInvPlugin commands
+    description: Allows using basic InsureInv commands
     default: true
   insureinv.admin:
-    description: Allows using administrative InsureInvPlugin commands
+    description: Allows using administrative InsureInv commands
     default: op
     children:
       insureinv.use: true

@@ -1,6 +1,6 @@
 package dev.hytical.insureinv.storages.backend
 
-import dev.hytical.insureinv.InsureInvPlugin
+import dev.hytical.insureinv.InsureInv
 import dev.hytical.insureinv.managers.ConfigManager
 import dev.hytical.insureinv.models.PlayerDataModel
 import dev.hytical.insureinv.storages.StorageBackend
@@ -15,7 +15,7 @@ import java.sql.ResultSet
 import java.util.*
 
 class SqliteStorage(
-    private val plugin: InsureInvPlugin,
+    private val plugin: InsureInv,
     private val configManager: ConfigManager
 ) : StorageBackend {
 

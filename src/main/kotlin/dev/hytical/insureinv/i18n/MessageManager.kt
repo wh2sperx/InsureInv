@@ -1,6 +1,6 @@
 package dev.hytical.insureinv.i18n
 
-import dev.hytical.insureinv.InsureInvPlugin
+import dev.hytical.insureinv.InsureInv
 import dev.hytical.insureinv.managers.ConfigManager
 import net.kyori.adventure.text.Component
 import net.kyori.adventure.text.minimessage.MiniMessage
@@ -8,7 +8,7 @@ import org.bukkit.command.CommandSender
 import org.bukkit.entity.Player
 
 class MessageManager(
-    private val plugin: InsureInvPlugin,
+    private val plugin: InsureInv,
     private val configManager: ConfigManager
 ) {
     private val miniMessage: MiniMessage = MiniMessage.miniMessage()

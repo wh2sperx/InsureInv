@@ -1,6 +1,6 @@
 package dev.hytical.insureinv.managers
 
-import dev.hytical.insureinv.InsureInvPlugin
+import dev.hytical.insureinv.InsureInv
 import dev.hytical.insureinv.economy.EconomyType
 import dev.hytical.insureinv.storages.StorageType
 import org.bukkit.configuration.file.FileConfiguration
@@ -8,7 +8,7 @@ import java.io.File
 
 @Suppress("unused")
 class ConfigManager(
-    private val plugin: InsureInvPlugin
+    private val plugin: InsureInv
 ) {
     private var config: FileConfiguration = plugin.config
     private val langFol = File(plugin.dataFolder, "lang")

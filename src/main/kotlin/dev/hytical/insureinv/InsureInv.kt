@@ -1,5 +1,6 @@
 package dev.hytical.insureinv
 
+import com.tcoded.folialib.FoliaLib
 import dev.hytical.insureinv.command.InsureInvCommand
 import dev.hytical.insureinv.economy.EconomyManager
 import dev.hytical.insureinv.i18n.I18nManager
@@ -8,7 +9,6 @@ import dev.hytical.insureinv.i18n.PluginLanguage
 import dev.hytical.insureinv.listeners.PlayerDeathListener
 import dev.hytical.insureinv.listeners.PlayerLocateListener
 import dev.hytical.insureinv.managers.ConfigManager
-import dev.hytical.insureinv.managers.SchedulerManager
 import dev.hytical.insureinv.metrics.MetricsManager
 import dev.hytical.insureinv.metrics.ServerPlatform
 import dev.hytical.insureinv.metrics.detectors.EnvironmentDetector
@@ -18,9 +18,13 @@ import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer
 import org.bukkit.plugin.java.JavaPlugin
 
 private const val PLUGIN_ID: Int = 29775
-open class InsureInvPlugin : JavaPlugin() {
 
+open class InsureInv : JavaPlugin() {
+
+    private val serverType = EnvironmentDetector.detect()
     lateinit var pluginBuildInfo: PluginBuildInfo
+        private set
+    lateinit var foliaLib: FoliaLib
         private set
     lateinit var configManager: ConfigManager
         private set
@@ -34,12 +38,10 @@ open class InsureInvPlugin : JavaPlugin() {
         private set
     lateinit var storageManager: StorageManager
         private set
-    lateinit var schedulerManager: SchedulerManager
-        private set
 
     override fun onEnable() {
-        val serverType = EnvironmentDetector.detect()
-        if (serverType == ServerPlatform.UNKNOWN || serverType == ServerPlatform.SPIGOT) {
+        foliaLib = FoliaLib(this)
+        if (serverType == ServerPlatform.UNKNOWN || foliaLib.isSpigot) {
             logger.severe("═══════════════════════════════════════════════════════════════")
             logger.severe("InsureInv requires Paper or Folia to run ( including forks ).")
             logger.severe("Spigot, non-bukkit and other server software are not supported.")
@@ -51,9 +53,7 @@ open class InsureInvPlugin : JavaPlugin() {
 
         pluginBuildInfo = PluginBuildInfo(this)
 
-        schedulerManager = SchedulerManager(this)
-
-        if (schedulerManager.isFolia) {
+        if (foliaLib.isFolia) {
             logger.info("Running on Folia - region-safe scheduling enabled")
         } else {
             logger.info("Running on Paper - standard scheduling enabled")
@@ -100,7 +100,9 @@ open class InsureInvPlugin : JavaPlugin() {
     }
 
     fun reloadI18n() {
-        if(::i18nManager.isInitialized) { i18nManager.rebuild() }
+        if (::i18nManager.isInitialized) {
+            i18nManager.rebuild()
+        }
     }
 
     private fun registerCommands() {
@@ -141,7 +143,7 @@ open class InsureInvPlugin : JavaPlugin() {
             " &8--------------------------------------",
             " &cɪɴꜰᴏʀᴍᴀᴛɪᴏɴ",
             "&7   • &fɴᴀᴍᴇ: &b${pluginBuildInfo.getPluginName(true)}",
-            "&7   • &fᴀᴜᴛʜᴏʀ: &bʜʏᴛɪᴄᴍᴄ",
+            "&7   • &fᴀᴜᴛʜᴏʀ: &bꞯʜᴜʏʏ",
             " &8--------------------------------------",
             ""
         ).forEach {

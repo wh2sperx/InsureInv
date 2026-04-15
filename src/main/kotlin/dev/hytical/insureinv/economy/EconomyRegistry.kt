@@ -1,6 +1,6 @@
 package dev.hytical.insureinv.economy
 
-import dev.hytical.insureinv.InsureInvPlugin
+import dev.hytical.insureinv.InsureInv
 import dev.hytical.insureinv.economy.providers.NoneProvider
 import dev.hytical.insureinv.economy.providers.PlayerPointsProvider
 import dev.hytical.insureinv.economy.providers.VaultProvider
@@ -9,7 +9,7 @@ import dev.hytical.insureinv.metrics.ServerPlatform
 import java.util.logging.Logger
 
 class EconomyRegistry(
-    plugin: InsureInvPlugin,
+    plugin: InsureInv,
     private val platform: ServerPlatform
 ) {
     private val logger: Logger = plugin.logger
@@ -22,6 +22,7 @@ class EconomyRegistry(
                 EconomyType.PLAYER_POINTS,
                 EconomyType.NONE
             )
+
             else -> listOf(
                 EconomyType.VAULT,
                 EconomyType.PLAYER_POINTS,

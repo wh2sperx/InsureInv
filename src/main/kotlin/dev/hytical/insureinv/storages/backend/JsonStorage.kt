@@ -3,7 +3,7 @@ package dev.hytical.insureinv.storages.backend
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.google.gson.reflect.TypeToken
-import dev.hytical.insureinv.InsureInvPlugin
+import dev.hytical.insureinv.InsureInv
 import dev.hytical.insureinv.managers.ConfigManager
 import dev.hytical.insureinv.models.PlayerDataModel
 import dev.hytical.insureinv.storages.StorageBackend
@@ -18,7 +18,7 @@ import java.util.*
 import java.util.concurrent.ConcurrentHashMap
 
 class JsonStorage(
-    private val plugin: InsureInvPlugin,
+    private val plugin: InsureInv,
     private val configManager: ConfigManager
 ) : StorageBackend {
 

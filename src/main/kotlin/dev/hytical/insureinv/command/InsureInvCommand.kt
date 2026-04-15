@@ -1,6 +1,6 @@
 package dev.hytical.insureinv.command
 
-import dev.hytical.insureinv.InsureInvPlugin
+import dev.hytical.insureinv.InsureInv
 import dev.hytical.insureinv.command.subcommands.*
 import dev.hytical.insureinv.economy.EconomyManager
 import dev.hytical.insureinv.i18n.MessageManager
@@ -13,27 +13,23 @@ import org.bukkit.command.TabCompleter
 import org.bukkit.entity.Player
 
 class InsureInvCommand(
-    private val plugin: InsureInvPlugin,
+    private val plugin: InsureInv,
     private val configManager: ConfigManager,
     private val storageManager: StorageManager,
     private val economyManager: EconomyManager,
     private val messageManager: MessageManager
 ) : CommandExecutor, TabCompleter {
 
-    private val subcommands: Map<String, SubCommand>
+    private val subcommands: Map<String, SubCommand> = buildMap {
+        put("buy", BuyCommand())
+        put("toggle", ToggleCommand())
+        put("info", InfoCommand())
+        put("usage", UsageCommand())
+        put("config", ConfigCommand())
 
-    init {
-        subcommands = buildMap {
-            put("buy", BuyCommand())
-            put("toggle", ToggleCommand())
-            put("info", InfoCommand())
-            put("usage", UsageCommand())
-            put("config", ConfigCommand())
-
-            put("setlang", SetLangCommand(plugin.i18nManager))
-            put("help", HelpCommand())
-            put("version", VersionCommand(plugin))
-        }
+        put("setlang", SetLangCommand(plugin.i18nManager))
+        put("help", HelpCommand())
+        put("version", VersionCommand(plugin))
     }
 
     override fun onCommand(sender: CommandSender, command: Command, label: String, args: Array<out String>): Boolean {
