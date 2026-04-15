@@ -12,6 +12,7 @@ class VaultUnlockedProvider(
 
     override fun isAvailable(): Boolean = true
 
+    @Suppress("DEPRECATION")
     override fun getBalance(player: OfflinePlayer): Double =
         economy.getBalance(pluginName, player.uniqueId).toDouble()
 
@@ -26,6 +27,7 @@ class VaultUnlockedProvider(
         return economy.deposit(pluginName, player.uniqueId, amount.toBigDecimal()).transactionSuccess()
     }
 
+    @Suppress("DEPRECATION")
     override fun formatAmount(amount: Double): String = economy.format(amount.toBigDecimal())
 
     companion object {
@@ -43,7 +45,7 @@ class VaultUnlockedProvider(
                 .getRegistration(Economy::class.java)
                 ?: return null
 
-            val provider = rsp.provider ?: return null
+            val provider = rsp.provider
 
             return VaultUnlockedProvider(provider)
         }

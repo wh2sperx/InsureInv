@@ -35,7 +35,7 @@ class VaultProvider(
                 .getRegistration(Economy::class.java)
                 ?: return null
 
-            val provider = rsp.provider ?: return null
+            val provider = rsp.provider
 
             return VaultProvider(provider)
         }
