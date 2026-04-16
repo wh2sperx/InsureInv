@@ -14,6 +14,11 @@ import dev.hytical.insureinv.metrics.ServerPlatform
 import dev.hytical.insureinv.metrics.detectors.EnvironmentDetector
 import dev.hytical.insureinv.storages.StorageManager
 import dev.hytical.insureinv.utils.PluginBuildInfo
+import dev.hytical.insureinv.utils.UpdateChecker
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer
 import org.bukkit.plugin.java.JavaPlugin
 
@@ -22,22 +27,15 @@ private const val PLUGIN_ID: Int = 29775
 open class InsureInv : JavaPlugin() {
 
     private val serverType = EnvironmentDetector.detect()
-    lateinit var pluginBuildInfo: PluginBuildInfo
-        private set
-    lateinit var foliaLib: FoliaLib
-        private set
-    lateinit var configManager: ConfigManager
-        private set
-    lateinit var metricsManager: MetricsManager
-        private set
-    lateinit var i18nManager: I18nManager
-        private set
-    lateinit var messageManager: MessageManager
-        private set
-    lateinit var economyManager: EconomyManager
-        private set
-    lateinit var storageManager: StorageManager
-        private set
+    lateinit var pluginBuildInfo: PluginBuildInfo private set
+    lateinit var updateChecker: UpdateChecker private set
+    lateinit var foliaLib: FoliaLib private set
+    lateinit var configManager: ConfigManager private set
+    lateinit var metricsManager: MetricsManager private set
+    lateinit var i18nManager: I18nManager private set
+    lateinit var messageManager: MessageManager private set
+    lateinit var economyManager: EconomyManager private set
+    lateinit var storageManager: StorageManager private set
 
     override fun onEnable() {
         foliaLib = FoliaLib(this)
@@ -52,6 +50,10 @@ open class InsureInv : JavaPlugin() {
         }
 
         pluginBuildInfo = PluginBuildInfo(this)
+        updateChecker = UpdateChecker(logger)
+        CoroutineScope(Dispatchers.IO).launch {
+            updateChecker.checkForUpdates(pluginMeta.version, false)
+        }
 
         if (foliaLib.isFolia) {
             logger.info("Running on Folia - region-safe scheduling enabled")
@@ -94,6 +96,10 @@ open class InsureInv : JavaPlugin() {
 
         if (::storageManager.isInitialized) {
             storageManager.shutdown()
+        }
+
+        runBlocking {
+            updateChecker.close()
         }
 
         logger.info("InsureInv disabled.")

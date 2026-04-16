@@ -67,6 +67,7 @@ repositories {
 val coroutinesVersion: String by project
 
 dependencies {
+    implementation("io.ktor:ktor-client-okhttp-jvm:3.4.2")
     compileOnly("io.papermc.paper:paper-api:1.21.10-R0.1-SNAPSHOT")
     compileOnly("com.github.MilkBowl:VaultAPI:1.7.1")
     compileOnly("me.clip:placeholderapi:2.11.6")
@@ -75,10 +76,15 @@ dependencies {
     compileOnly("net.milkbowl.vault:VaultUnlockedAPI:2.16")
     compileOnly("com.mysql:mysql-connector-j:8.3.0")
     compileOnly("org.xerial:sqlite-jdbc:3.45.1.0")
-    compileOnly("com.google.code.gson:gson:2.10.1")
+    compileOnly("com.google.code.gson:gson:2.13.2")
 
     compileOnly("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion")
 
+    implementation("io.ktor:ktor-client-core:3.4.2")
+    implementation("io.ktor:ktor-client-cio:3.4.2")
+    implementation("io.ktor:ktor-client-content-negotiation:3.4.2")
+    implementation("io.ktor:ktor-serialization-kotlinx-json:3.4.2")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.11.0")
     implementation("org.bstats:bstats-bukkit:3.1.0")
     implementation("com.tcoded:FoliaLib:0.4.3")
     implementation("com.github.wh2sperx.hyticallib-i18n:hyticallib-i18n-bukkit:main-SNAPSHOT")
@@ -113,13 +119,31 @@ tasks.shadowJar {
         include(dependency("org.bstats:bstats-base"))
         include(dependency("com.github.wh2sperx.hyticallib-i18n:hyticallib-i18n-bukkit"))
         include(dependency("com.github.wh2sperx.hyticallib-i18n:hyticallib-i18n-core"))
+
+        include(dependency("io.ktor:ktor-client-core"))
+        include(dependency("io.ktor:ktor-client-cio"))
+        include(dependency("io.ktor:ktor-client-content-negotiation"))
+        include(dependency("io.ktor:ktor-serialization-kotlinx-json"))
+        include(dependency("org.jetbrains.kotlinx:kotlinx-serialization-json"))
+        include(dependency("io.ktor:ktor-client-okhttp-jvm"))
     }
 
     relocate("com.tcoded.folialib", "dev.hytical.insureinv.libs.folialib")
     relocate("org.bstats", "dev.hytical.insureinv.libs.bstats")
-    
+
     relocate("dev.hytical.i18n", "dev.hytical.insureinv.libs.i18n") {
         include("dev.hytical.i18n.**")
+    }
+
+    relocate("io.ktor", "dev.hytical.insureinv.libs.ktor")
+    relocate("kotlinx.serialization", "dev.hytical.insureinv.libs.kotlinx.serialization")
+    relocate("kotlinx.coroutines", "dev.hytical.insureinv.libs.kotlinx.coroutines")
+    relocate("okhttp3", "dev.hytical.insureinv.libs.okhttp3")
+    relocate("okio", "dev.hytical.insureinv.libs.okio")
+
+    relocate("kotlin", "dev.hytical.insureinv.libs.kotlin") {
+        include("kotlin.**")
+        exclude("kotlinx.**")
     }
 
     exclude("META-INF/*.SF")
