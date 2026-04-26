@@ -1,13 +1,10 @@
 name: Build Gradle Project
 
-env:
-  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: TRUE
-
 on:
   push:
-    branches: [ main, master, dev ]
+    branches: [ main, dev ]
   pull_request:
-    branches: [ main, master ]
+    branches: [ main ]
   workflow_dispatch:
 
 jobs:
@@ -47,7 +44,7 @@ jobs:
           JAR_NAME=$(basename "$JAR_FILE")
           echo "jar_name=$JAR_NAME" >> $GITHUB_OUTPUT
           echo "Found JAR: $JAR_NAME"
-      - name: Upload build artifacts with custom name
+      - name: Upload build artifacts
         uses: actions/upload-artifact@v4
         with:
           name: ${{ steps.get_jar_name.outputs.jar_name }}
@@ -56,4 +53,4 @@ jobs:
             !build/libs/*-plain.jar
           if-no-files-found: error
           compression-level: 6
-          retention-days: 14
+          retention-days: 7
