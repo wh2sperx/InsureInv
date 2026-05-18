@@ -81,8 +81,8 @@ dependencies {
 
     implementation("org.bstats:bstats-bukkit:3.1.0")
     implementation("com.tcoded:FoliaLib:0.4.3")
-    implementation("com.github.wh2sperx.hyticallib-i18n:hyticallib-i18n-bukkit:main-SNAPSHOT")
-    implementation("com.github.wh2sperx.hyticallib-i18n:hyticallib-i18n-core:main-SNAPSHOT")
+    implementation("com.github.hqng05.hqng-i18n:hqng-i18n-bukkit:1.0.2")
+    implementation("com.github.hqng05.hqng-i18n:hqng-i18n-core:1.0.2")
 }
 
 kotlin {
@@ -93,8 +93,8 @@ tasks.processResources {
     dependsOn(generateGitProperties)
 
     val props = mapOf(
-        "name"      to project.name,
-        "version"   to project.version.toString(),
+        "name" to project.name,
+        "version" to project.version.toString(),
         "gitCommit" to gitCommitShort,
     )
     inputs.properties(props)
@@ -111,15 +111,15 @@ tasks.shadowJar {
         include(dependency("com.tcoded:FoliaLib"))
         include(dependency("org.bstats:bstats-bukkit"))
         include(dependency("org.bstats:bstats-base"))
-        include(dependency("com.github.wh2sperx.hyticallib-i18n:hyticallib-i18n-bukkit"))
-        include(dependency("com.github.wh2sperx.hyticallib-i18n:hyticallib-i18n-core"))
+        include(dependency("com.github.hqng05.hqng-i18n:hqng-i18n-bukkit"))
+        include(dependency("com.github.hqng05.hqng-i18n:hqng-i18n-core"))
     }
 
-    relocate("com.tcoded.folialib", "dev.hytical.insureinv.libs.folialib")
-    relocate("org.bstats", "dev.hytical.insureinv.libs.bstats")
-    
-    relocate("dev.hytical.i18n", "dev.hytical.insureinv.libs.i18n") {
-        include("dev.hytical.i18n.**")
+    relocate("com.tcoded.folialib", "dev.hqng.insureinv.libs.folialib")
+    relocate("org.bstats", "dev.hqng.insureinv.libs.bstats")
+
+    relocate("dev.hqng.i18n", "dev.hqng.insureinv.libs.i18n") {
+        include("dev.hqng.i18n.**")
     }
 
     exclude("META-INF/*.SF")
